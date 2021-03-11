@@ -1,0 +1,700 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recursion (vs iteration) &#8212; Python for Scientific Computing</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Plotting Graphs with Matplotlib" href="graphing-with-matplotlib.html" />
+    <link rel="prev" title="Iteration with while" href="iteration-with-while.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python for Scientific Computing</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Python with Numpy and Matplotlib
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction-to-python-and-jupyter-notebooks.html">
+   Introduction to Python and Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-variables-lists-tuples-numpy-arrays.html">
+   Python Variables, Including Lists and Tuples, and Arrays from Package Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decisions-with-if-else-elif.html">
+   Decision Making With if, else, and elif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Defining and Using Python Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="code-files-modules-IDEs.html">
+   Code Files, Modules, and an Integrated Development Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-for.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-while.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     while
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Recursion (vs iteration)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphing-with-matplotlib.html">
+   Plotting Graphs with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array-operations-and-linear-algebra.html">
+   Numpy Array Operations and Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summation-and-integration.html">
+   Summation and Integration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random-numbers-and-simulation.html">
+   Random Numbers, Histograms, and a Simulation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="formatted-output-and-some-text-string-manipulation.html">
+   Formatted Output and Some Text String Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes-objects-attributes-methods.html">
+   Classes, Objects, Attributes, Methods: Very Basic Object-Oriented Programming in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="displaying-python-code-in-markdown-text-cells.html">
+   Displaying Python Code in Markdown Text Cells
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exception-handling.html">
+   Exceptions and Exception Handling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy-tools-for-linear-algebra.html">
+   Package Scipy and More Tools for Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="romberg-integration.html">
+   The Romberg Method
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/recursion.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/recursion.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iterative-form">
+   Iterative form
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recursive-form">
+   Recursive form
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-a">
+     Exercise A
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-b-fibonacci-numbers-by-recursion">
+     Exercise B: Fibonacci numbers by recursion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-c-tracing-the-recursion">
+     Exercise C: tracing the recursion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-d-present-your-work-in-a-jupyter-notebook">
+     Exercise D: present your work in a Jupyter notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-material-tail-recursion">
+   Bonus Material: Tail Recursion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-final-challenge-optional-and-maybe-hard">
+   A final challenge (optional, and maybe hard!)
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="recursion-vs-iteration">
+<h1>Recursion (vs iteration)<a class="headerlink" href="#recursion-vs-iteration" title="Permalink to this headline">¶</a></h1>
+<p><em>Estimated time to complete:</em> one hour.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Although we have now seen all the essential tools for describing mathematical calculations and working with functions, there is one more algorithmic tool that can be very convenient, and is also of fundamental importance in the study of functions in both mathematics and theoretical computer science.</p>
+<p>This is <strong>recursively defined functions</strong>: where the definition of the function refers to other values of the same function.
+To avoid infinite loops, the other values are typically for input values that are in some sense “earlier” or “smaller”, such as lower values of a natural number.</p>
+<p>We have already seen two familiar examples in Unit 5; the factorial:
+$<span class="math notranslate nohighlight">\(
+\begin{split}
+0! &amp;= 1
+\\
+n! &amp;= n \cdot (n-1)! \text{ for } n \geq 1
+\end{split}
+\)</span>$</p>
+<p>and the Fibonacci numbers
+$<span class="math notranslate nohighlight">\(
+\begin{split}
+F_0 &amp;= 1
+\\
+F_1 &amp;= 1
+\\
+F_n &amp;= F_{n-1} + F_{n-2} \text{ for } n \geq 2
+\end{split}
+\)</span>$</p>
+</div>
+<div class="section" id="iterative-form">
+<h2>Iterative form<a class="headerlink" href="#iterative-form" title="Permalink to this headline">¶</a></h2>
+<p>These can be implemented using iteration, as seen in Unit 5; here are two versions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial_iterative</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">n_factorial</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># n+1 to include the factor n</span>
+        <span class="n">n_factorial</span> <span class="o">*=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">n_factorial</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">! = </span><span class="si">{</span><span class="n">factorial_iterative</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test some edge cases:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;0!=&#39;</span><span class="p">,</span> <span class="n">factorial_iterative</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1!=&#39;</span><span class="p">,</span> <span class="n">factorial_iterative</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5! = 120
+Test some edge cases:
+0!= 1
+1!= 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">first_n_factorials</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">factorials</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">factorials</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">factorials</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">factorials</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The first </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> factorials (so up to </span><span class="si">{</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">!) are </span><span class="si">{</span><span class="n">first_n_factorials</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The first 10 factorials (so up to 9!) are [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="recursive-form">
+<h2>Recursive form<a class="headerlink" href="#recursive-form" title="Permalink to this headline">¶</a></h2>
+<p>However we can also use a form that is closer to the mathematical statement.</p>
+<p>First, let us put the factorial definition in more standard mathematical notation for functions
+$<span class="math notranslate nohighlight">\(
+\begin{split}
+f(0) &amp;= 1
+\\
+f(n) &amp;= n \cdot f(n-1) \text{ for } n \geq 1
+\end{split}
+\)</span>$</p>
+<p>Next to make it more algorithmic and start the segue towards Python code, distinguish the two cases with an <code class="docutils literal notranslate"><span class="pre">if</span></code></p>
+<p>if n = 0:<br />
+<span class="math notranslate nohighlight">\(\qquad f(n) = 1\)</span><br />
+else:<br />
+<span class="math notranslate nohighlight">\(\qquad f(n) = n \times f(n-1)\)</span></p>
+<p>Here that is in Python code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial_recursive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial_recursive</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">! = </span><span class="si">{</span><span class="n">factorial_recursive</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9! = 362880
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yes, Python functions are allowed to call themselves, though one must beware that this could lead to an infinite loop.</p>
+<p><a name=Exercise-A></a></p>
+<div class="section" id="exercise-a">
+<h3>Exercise A<a class="headerlink" href="#exercise-a" title="Permalink to this headline">¶</a></h3>
+<p>Can you see how you could cause that problem with this function?</p>
+<p>Try, and you will see that Python has some defences against this kind of infinite loop.</p>
+<p>It can be illuminating to <em>trace</em> the steps with some extra print commands:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial_recursive_with_tracing</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">factorial</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">factorial</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial_recursive_with_tracing</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">trace</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">trace</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">! = </span><span class="si">{</span><span class="n">factorial</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">factorial</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">nfactorial</span> <span class="o">=</span> <span class="n">factorial_recursive_with_tracing</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">trace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The final result is&#39;</span><span class="p">,</span> <span class="n">nfactorial</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n = 5
+n = 4
+n = 3
+n = 2
+n = 1
+n = 0
+0! = 1
+1! = 1
+2! = 2
+3! = 6
+4! = 24
+5! = 120
+The final result is 120
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Experiment:</strong> Try sending this <em>tracing</em> version into an infinite loop.
+(In JupyterLab, note the square “stop” button to the right of the triangular “play” button!)</p>
+<p><a name=Exercise-B></a></p>
+</div>
+<div class="section" id="exercise-b-fibonacci-numbers-by-recursion">
+<h3>Exercise B: Fibonacci numbers by recursion<a class="headerlink" href="#exercise-b-fibonacci-numbers-by-recursion" title="Permalink to this headline">¶</a></h3>
+<p>Write and test a recursive function to evaluate the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number <span class="math notranslate nohighlight">\(F_n\)</span>, mimicking the first, simplest recursive version for the factorial above.</p>
+<p>Do this without using either lists, arrays, or special variables holding the two previous values!</p>
+<p>If you have access to Spyder (or another Python IDE) develop and test this in a Python file “exercise7b.py” and submit that as well as a final notebook for this unit.</p>
+<p>Test for <span class="math notranslate nohighlight">\(n\)</span> at least 5.</p>
+<p><a name=Exercise-C></a></p>
+</div>
+<div class="section" id="exercise-c-tracing-the-recursion">
+<h3>Exercise C: tracing the recursion<a class="headerlink" href="#exercise-c-tracing-the-recursion" title="Permalink to this headline">¶</a></h3>
+<p>Write and test a second recursive function to evaluate the first <span class="math notranslate nohighlight">\(n\)</span> Fibonacci numbers,
+adding the option of tracing output, as in the second recursive example above.</p>
+<p>Again test for <span class="math notranslate nohighlight">\(n\)</span> at least 5.</p>
+<p>Again, develop and test this in a Python file “exercise7c.py” initially if you have access to a suitable IDE.</p>
+<p>Comment on why this illustrates that, although recursive implementations can be very concise and elegant, they are sometimes very inefficient compared to expressing the calculation as an iteration with <code class="docutils literal notranslate"><span class="pre">for</span></code> or <code class="docutils literal notranslate"><span class="pre">while</span></code> loops.</p>
+<p><a name=Exercise-D></a></p>
+</div>
+<div class="section" id="exercise-d-present-your-work-in-a-jupyter-notebook">
+<h3>Exercise D: present your work in a Jupyter notebook<a class="headerlink" href="#exercise-d-present-your-work-in-a-jupyter-notebook" title="Permalink to this headline">¶</a></h3>
+<p>If you have not done so already, put all your code for the above exercises into a single Jupyter notebook.</p>
+<p>Make sure that, like all documents produced in this course, the notebook and any other files submitted have an appropriate title, your name, and the correct date at the top!</p>
+<p>Note the way I express the date as “Last modified”; keep this up-to-date when you revise.</p>
+</div>
+</div>
+<div class="section" id="bonus-material-tail-recursion">
+<h2>Bonus Material: Tail Recursion<a class="headerlink" href="#bonus-material-tail-recursion" title="Permalink to this headline">¶</a></h2>
+<p>Some recursive algorithms are so-called <em>tail recursive</em>,
+which means that when a function calls itself, the “calling” invocation of the function has nothing more to do; the task is handed off entirely to the new invocation.
+This means that it can be possible to “clean up” by getting rid of all memory and such associated with the calling invocation of the function, eliminating that nesting seen in the above tracing and potentially improving efficiency by a lot.</p>
+<p>Some programming languages do this “clean up” of so-called “tail calls”; indeed <em>functional progamming languages</em> forbid variables to have their values changed within a function (so that functions in such a language are far more like real mathematical functions), and this rules out many <code class="docutils literal notranslate"><span class="pre">while</span></code> loop algorithms, like those above.
+Then recursion is a central tool, and there is a high piority on implementing recursion in this efficient way.</p>
+<p>For example, here is a tail recursive approach to the factorial:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial_tail_recursive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;For convenience, we wrap the actual &quot;working&quot; function inside one with simpler input:</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">tail_factorial</span><span class="p">(</span><span class="n">result_so_far</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;result_so_far = </span><span class="si">{</span><span class="n">result_so_far</span><span class="si">}</span><span class="s1">, n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result_so_far</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">tail_factorial</span><span class="p">(</span><span class="n">result_so_far</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">result_so_far</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">tail_factorial</span><span class="p">(</span><span class="n">result_so_far</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;factorial_tail_recursive gives </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">! = </span><span class="si">{</span><span class="n">factorial_tail_recursive</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">For comparison,&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;factorial_recursive gives </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">! = </span><span class="si">{</span><span class="n">factorial_recursive</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;factorial_iterative gives </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">! = </span><span class="si">{</span><span class="n">factorial_iterative</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>result_so_far = 1, n = 9
+result_so_far = 9, n = 8
+result_so_far = 72, n = 7
+result_so_far = 504, n = 6
+result_so_far = 3024, n = 5
+result_so_far = 15120, n = 4
+result_so_far = 60480, n = 3
+result_so_far = 181440, n = 2
+result_so_far = 362880, n = 1
+result_so_far = 362880, n = 0
+factorial_tail_recursive gives 9! = 362880
+
+For comparison,
+factorial_recursive gives 9! = 362880
+factorial_iterative gives 9! = 362880
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, tail recursion is in general equivalent to iteration with a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop, with the input and output of the tail recursive function instead being variables that are updated in the loop.
+Thus it is mostly a matter of preference as to how one expresses the algorithm.</p>
+<p>For example, the above can be rather straightforwardly translated to the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial_tailless</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">tracing</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">result_so_far</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tracing</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;result_so_far = </span><span class="si">{</span><span class="n">result_so_far</span><span class="si">}</span><span class="s1">, n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">result_so_far</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">result_so_far</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result_so_far</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;factorial_tailless gives </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">! = </span><span class="si">{</span><span class="n">factorial_tailless</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>factorial_tailless gives 9! = 362880
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-final-challenge-optional-and-maybe-hard">
+<h2>A final challenge (optional, and maybe hard!)<a class="headerlink" href="#a-final-challenge-optional-and-maybe-hard" title="Permalink to this headline">¶</a></h2>
+<p>Write a tail-recursive Python function for computing the Fibonacci number <span class="math notranslate nohighlight">\(F_n\)</span>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="iteration-with-while.html" title="previous page">Iteration with <code class="docutils literal notranslate"><span class="pre">while</span></code></a>
+    <a class='right-next' id="next-link" href="graphing-with-matplotlib.html" title="next page">Plotting Graphs with Matplotlib</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brenton LeMesurier, College of Charleston<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

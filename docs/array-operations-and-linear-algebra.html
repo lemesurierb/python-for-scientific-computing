@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numpy Array Operations and Linear Algebra &#8212; Python for Scientific Computing</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Summation and Integration" href="summation-and-integration.html" />
+    <link rel="prev" title="Plotting Graphs with Matplotlib" href="graphing-with-matplotlib.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python for Scientific Computing</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Python with Numpy and Matplotlib
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction-to-python-and-jupyter-notebooks.html">
+   Introduction to Python and Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-variables-lists-tuples-numpy-arrays.html">
+   Python Variables, Including Lists and Tuples, and Arrays from Package Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decisions-with-if-else-elif.html">
+   Decision Making With if, else, and elif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Defining and Using Python Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="code-files-modules-IDEs.html">
+   Code Files, Modules, and an Integrated Development Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-for.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-while.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     while
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recursion.html">
+   Recursion (vs iteration)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphing-with-matplotlib.html">
+   Plotting Graphs with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Numpy Array Operations and Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summation-and-integration.html">
+   Summation and Integration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random-numbers-and-simulation.html">
+   Random Numbers, Histograms, and a Simulation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="formatted-output-and-some-text-string-manipulation.html">
+   Formatted Output and Some Text String Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes-objects-attributes-methods.html">
+   Classes, Objects, Attributes, Methods: Very Basic Object-Oriented Programming in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="displaying-python-code-in-markdown-text-cells.html">
+   Displaying Python Code in Markdown Text Cells
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exception-handling.html">
+   Exceptions and Exception Handling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy-tools-for-linear-algebra.html">
+   Package Scipy and More Tools for Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="romberg-integration.html">
+   The Romberg Method
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/array-operations-and-linear-algebra.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/array-operations-and-linear-algebra.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-matrix-transpose-a-t-is-given-by-a-t">
+   The matrix transpose
+   <span class="math notranslate nohighlight">
+    \(A^T\)
+   </span>
+   is given by
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     A.T
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slicing-extracting-rows-columns-and-other-rectangular-chunks-from-matrices">
+   <em>
+    Slicing
+   </em>
+   : Extracting rows, columns, and other rectangular chunks from matrices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#index-notation-for-slicing">
+     Index notation for slicing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synonyms-for-array-names-with-the-equal-sign-not-copying">
+     Synonyms for array names with the equal sign (not copying!)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#copying-arrays-with-method-copy">
+     Copying arrays with method .copy()
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-a">
+       Exercise A
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-b">
+       Exercise B
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="numpy-array-operations-and-linear-algebra">
+<h1>Numpy Array Operations and Linear Algebra<a class="headerlink" href="#numpy-array-operations-and-linear-algebra" title="Permalink to this headline">¶</a></h1>
+<p><strong>Note:</strong> We will see more tools for linear algebra in th sectio on <span class="xref myst">Scipy Tools</span>, which introduces the package <em>Scipy</em>.</p>
+<p>As of version 3.5, Python can handle matrix multiplication on Numpy arrays, using the at sign “&#64;”:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C = A @ B
+</pre></div>
+</div>
+<p>Why this strange notation? Because</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>D = A * B
+</pre></div>
+</div>
+<p>is instead “point-wise” multiplication of arrays, with <code class="docutils literal notranslate"><span class="pre">D[i,j]</span> <span class="pre">=</span> <span class="pre">A[i,j]</span> <span class="pre">*</span> <span class="pre">B[i,j]</span></code> instead of</p>
+<div class="math notranslate nohighlight">
+\[C_{i,j}= \sum_{k} a_{ik} b_{kj}\]</div>
+<p><strong>Aside 1: Numpy <code class="docutils literal notranslate"><span class="pre">matrix</span></code> is now redundant!</strong></p>
+<p>Previously, Numpy supported matrix calculations withe variables of type <code class="docutils literal notranslate"><span class="pre">matrix</span></code>, a special sub-tpye of <code class="docutils literal notranslate"><span class="pre">array</span></code>.
+However, with the addition of “&#64;” for matrix multiplication of arrays, that option is now un-needed, and I advise you to avoid it.</p>
+<p><strong>Aside 2: Floating point numbers vs integers</strong></p>
+<p>Though Python is generally good at understanding when an integer like <code class="docutils literal notranslate"><span class="pre">7</span></code> is to be used as a floating point (real) number, it is sometimes best to make this distinction explicitly when working with module <code class="docutils literal notranslate"><span class="pre">numpy</span></code>;
+otherwise sometimes division done within numpy functions returns an integer answer, like <code class="docutils literal notranslate"><span class="pre">7/2</span> <span class="pre">=</span> <span class="pre">3</span></code>.</p>
+<p>Thus from now on, when I mean an integer to be used as a floating point number, I give it a decimal point: <code class="docutils literal notranslate"><span class="pre">7./2.</span></code> will reliably be <code class="docutils literal notranslate"><span class="pre">3.5</span></code></p>
+<p>First we explore some basic features offered by Numpy; then we will look at some more advanced tools from package Scipy, and specifically its module <code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code> for linear algebra.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A is</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;B is</span><span class="se">\n</span><span class="si">{</span><span class="n">B</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C is</span><span class="se">\n</span><span class="si">{</span><span class="n">C</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A is
+[[1 2 3]
+ [4 5 6]]
+B is
+[[1 2]
+ [3 4]
+ [5 6]]
+C is
+[[10  9  8]
+ [ 7  6  5]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The matrix product A times B is:</span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The matrix product B times A is:</span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">B</span> <span class="o">@</span> <span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The matrix product A times B is:
+ [[22 28]
+ [49 64]]
+The matrix product B times A is:
+ [[ 9 12 15]
+ [19 26 33]
+ [29 40 51]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The array product A * B fails:</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span> <span class="o">*</span> <span class="n">B</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="mi">3</span><span class="n">bb26336abf9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The array product A * B fails:</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span> <span class="o">*</span> <span class="n">B</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: operands could not be broadcast together with shapes (2,3) (3,2) 
+</pre></div>
+</div>
+</div>
+</div>
+<p>On the other hand:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Array product A times C is</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span> <span class="o">*</span> <span class="n">C</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array product A times C is
+[[10 18 24]
+ [28 30 30]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix product A times C fails:</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span> <span class="o">@</span> <span class="n">C</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">55</span><span class="n">b834c682c2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix product A times C fails:</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span> <span class="o">@</span> <span class="n">C</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nn">ValueError: matmul: Input operand 1 has a mismatch</span> in <span class="ni">its core dimension 0, with gufunc signature (n?,k),(k,m?)-&gt;(n?,m?) </span><span class="nt">(size 2 is different from 3)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-matrix-transpose-a-t-is-given-by-a-t">
+<h2>The matrix transpose <span class="math notranslate nohighlight">\(A^T\)</span> is given by <code class="docutils literal notranslate"><span class="pre">A.T</span></code><a class="headerlink" href="#the-matrix-transpose-a-t-is-given-by-a-t" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A-transpose is</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A-transpose is
+[[1 4]
+ [2 5]
+ [3 6]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="slicing-extracting-rows-columns-and-other-rectangular-chunks-from-matrices">
+<h2><em>Slicing</em>: Extracting rows, columns, and other rectangular chunks from matrices<a class="headerlink" href="#slicing-extracting-rows-columns-and-other-rectangular-chunks-from-matrices" title="Permalink to this headline">¶</a></h2>
+<p>This works with Python lists and Numpy arrays, and we have seen some of it before;
+I review it here because it will help with doing the row operations of linear algebra.</p>
+<div class="section" id="index-notation-for-slicing">
+<h3>Index notation for slicing<a class="headerlink" href="#index-notation-for-slicing" title="Permalink to this headline">¶</a></h3>
+<p>For an index with n possible values, from 0 to n-1:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a:b</span></code> means indices i in th usual semi-open interval <span class="math notranslate nohighlight">\(a \leq i &lt; b\)</span> or <span class="math notranslate nohighlight">\([a,b)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a:</span></code> is short for <code class="docutils literal notranslate"><span class="pre">a:n</span></code>, so indices <span class="math notranslate nohighlight">\(a \leq i\)</span>, all the way to the maximum index value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:b</span></code> is short for <code class="docutils literal notranslate"><span class="pre">0:b</span></code>, so all indices <span class="math notranslate nohighlight">\(i &lt; b\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:</span></code> combines both of the above, so is short for <code class="docutils literal notranslate"><span class="pre">0:n</span></code>; all possible indices</p></li>
+<li><p>index value <code class="docutils literal notranslate"><span class="pre">-1</span></code> refers the last entry; the same as index n-1, but without needing to know n.</p></li>
+<li><p>index value <code class="docutils literal notranslate"><span class="pre">-m</span></code> refers the “m-th last” entry; the same as index n-m, again without needing to know n.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A:</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The column of index 1 (presented as a row vector): </span><span class="si">{</span><span class="n">A</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The row of index 1: </span><span class="si">{</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The first 2 elements of the row of index 1: </span><span class="si">{</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,:</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Another way to say the above: </span><span class="si">{</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The bottom-right element: </span><span class="si">{</span><span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The 2x2 sub-matrix in the bottom-right corner:</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:,</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A:
+[[1 2 3]
+ [4 5 6]]
+The column of index 1 (presented as a row vector): [2 5]
+The row of index 1: [4 5 6]
+The first 2 elements of the row of index 1: [4 5]
+Another way to say the above: [4 5]
+The bottom-right element: 6
+The 2x2 sub-matrix in the bottom-right corner:
+[[2 3]
+ [5 6]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="synonyms-for-array-names-with-the-equal-sign-not-copying">
+<h3>Synonyms for array names with the equal sign (not copying!)<a class="headerlink" href="#synonyms-for-array-names-with-the-equal-sign-not-copying" title="Permalink to this headline">¶</a></h3>
+<p>If we use the equal sign between two array names, that makes them synonyms, referring to the same values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A is</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">Anickname</span> <span class="o">=</span> <span class="n">A</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anickname is</span><span class="se">\n</span><span class="si">{</span><span class="n">Anickname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">Anickname</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anickname is now</span><span class="se">\n</span><span class="si">{</span><span class="n">Anickname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;and so is A!:</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A is
+[[1 2 3]
+ [4 5 6]]
+Anickname is
+[[1 2 3]
+ [4 5 6]]
+Anickname is now
+[[12  2  3]
+ [ 4  5  6]]
+and so is A!:
+[[12  2  3]
+ [ 4  5  6]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="copying-arrays-with-method-copy">
+<h3>Copying arrays with method .copy()<a class="headerlink" href="#copying-arrays-with-method-copy" title="Permalink to this headline">¶</a></h3>
+<p>Thus if we want a separate new array or list with the same elements initially, we must make a copy with the method <code class="docutils literal notranslate"><span class="pre">.copy()</span></code>, not the equal sign:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A is</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">Acopy</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Acopy is</span><span class="se">\n</span><span class="si">{</span><span class="n">Acopy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">Acopy</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">54</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Acopy is now</span><span class="se">\n</span><span class="si">{</span><span class="n">Acopy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A is still</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A is
+[[1 2 3]
+ [4 5 6]]
+Acopy is
+[[1 2 3]
+ [4 5 6]]
+Acopy is now
+[[54  2  3]
+ [ 4  5  6]]
+A is still
+[[1 2 3]
+ [4 5 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><a name=Exercise-A></a></p>
+<div class="section" id="exercise-a">
+<h4>Exercise A<a class="headerlink" href="#exercise-a" title="Permalink to this headline">¶</a></h4>
+<p>Create a Numpy array (not a Numpy <em>matrix</em>; those are now mostly obsolete!) containing the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \left[ \begin{array}{ccc} 4. &amp; 2. &amp; 1. \\ 9. &amp; 3. &amp; 1. \\ 25. &amp; 5. &amp; 1. \end{array} \right]\end{split}\]</div>
+<p>and one containing the vector</p>
+<div class="math notranslate nohighlight">
+\[b = [ 0.693147, 1.098612, 1.386294]\]</div>
+<p><a name=Exercise-B></a></p>
+</div>
+<div class="section" id="exercise-b">
+<h4>Exercise B<a class="headerlink" href="#exercise-b" title="Permalink to this headline">¶</a></h4>
+<p>Create arrays <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(d\)</span> containing respectively the last row of <span class="math notranslate nohighlight">\(A\)</span> and the middle column of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p><strong>Note:</strong> Do this by manipulating the array <code class="docutils literal notranslate"><span class="pre">A</span></code> with indexing and slicing operations, without entering any numerical values for array entries explicity.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="graphing-with-matplotlib.html" title="previous page">Plotting Graphs with Matplotlib</a>
+    <a class='right-next' id="next-link" href="summation-and-integration.html" title="next page">Summation and Integration</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brenton LeMesurier, College of Charleston<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

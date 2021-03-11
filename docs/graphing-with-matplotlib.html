@@ -1,0 +1,907 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plotting Graphs with Matplotlib &#8212; Python for Scientific Computing</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Numpy Array Operations and Linear Algebra" href="array-operations-and-linear-algebra.html" />
+    <link rel="prev" title="Recursion (vs iteration)" href="recursion.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python for Scientific Computing</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Python with Numpy and Matplotlib
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction-to-python-and-jupyter-notebooks.html">
+   Introduction to Python and Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-variables-lists-tuples-numpy-arrays.html">
+   Python Variables, Including Lists and Tuples, and Arrays from Package Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decisions-with-if-else-elif.html">
+   Decision Making With if, else, and elif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Defining and Using Python Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="code-files-modules-IDEs.html">
+   Code Files, Modules, and an Integrated Development Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-for.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-while.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     while
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recursion.html">
+   Recursion (vs iteration)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Plotting Graphs with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array-operations-and-linear-algebra.html">
+   Numpy Array Operations and Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summation-and-integration.html">
+   Summation and Integration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random-numbers-and-simulation.html">
+   Random Numbers, Histograms, and a Simulation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="formatted-output-and-some-text-string-manipulation.html">
+   Formatted Output and Some Text String Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes-objects-attributes-methods.html">
+   Classes, Objects, Attributes, Methods: Very Basic Object-Oriented Programming in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="displaying-python-code-in-markdown-text-cells.html">
+   Displaying Python Code in Markdown Text Cells
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exception-handling.html">
+   Exceptions and Exception Handling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy-tools-for-linear-algebra.html">
+   Package Scipy and More Tools for Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="romberg-integration.html">
+   The Romberg Method
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/graphing-with-matplotlib.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/graphing-with-matplotlib.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-matplotlib-and-pyplot">
+   Introduction: Matplotlib and Pyplot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-on-matplotlib">
+   Sources on Matplotlib
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#choosing-where-the-graphs-appear">
+   Choosing where the graphs appear
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#producing-arrays-of-x-values-with-the-numpy-function-linspace">
+     Producing arrays of “x” values with the numpy function
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       linspace
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-graphs-with-plot">
+     Basic graphs with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       plot
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#smoother-graphs">
+   Smoother graphs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-curves-on-a-single-figure">
+   Multiple curves on a single figure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-curves-with-a-single-plot-command">
+   Two curves with a single
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     plot
+    </span>
+   </code>
+   command
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-curves-in-one-figure">
+   Multiple curves in one figure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-sequences">
+   Plotting sequences
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-curves-in-separate-figures-from-a-single-cell">
+   Plotting curves in separate figures (from a single cell)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decorating-the-curves">
+   Decorating the Curves
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-a-explore-ways-to-refine-your-figures">
+     Exercise A: Explore ways to refine your figures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-b-saving-externally-displayed-figures-to-files">
+     Exercise B: Saving externally displayed figures to files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-help-from-the-documentation">
+     Getting help from the documentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#p-s-a-shortcut-revealed-the-ipython-magic-command-pylab">
+     P. S. A shortcut revealed: the IPython “magic” command pylab
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="plotting-graphs-with-matplotlib">
+<h1>Plotting Graphs with Matplotlib<a class="headerlink" href="#plotting-graphs-with-matplotlib" title="Permalink to this headline">¶</a></h1>
+<p><em>Estimated time to complete:</em> one hour.</p>
+<div class="section" id="introduction-matplotlib-and-pyplot">
+<h2>Introduction: Matplotlib and Pyplot<a class="headerlink" href="#introduction-matplotlib-and-pyplot" title="Permalink to this headline">¶</a></h2>
+<p>Numerical data is often presented with graphs, and the tools we use for this come from the module <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> which is part of the Python <em>package</em> <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. (A Python <em>package</em> is essentially a module that also contains other modules.)</p>
+</div>
+<div class="section" id="sources-on-matplotlib">
+<h2>Sources on Matplotlib<a class="headerlink" href="#sources-on-matplotlib" title="Permalink to this headline">¶</a></h2>
+<p>Matplotlib is a huge collection of graphics tools, of which we see just a few here. For more information, the home site for Matplotlib is http://matplotlib.org
+and the section on pyplot is at http://matplotlib.org/1.3.1/api/pyplot_api.html</p>
+<p>However, another site that I find easier as an introduction is https://scipy-lectures.org/intro/matplotlib/</p>
+<p>In fact, that whole site https://scipy-lectures.org/ is quite useful a a reference on Python, Numpy, and so on.</p>
+<p><strong>Note:</strong> the descriptions here are for now about working in notebooks: see the note below on <a class="reference external" href="#with-Spyder-IPython">differences when using Spyder and IPython</a></p>
+</div>
+<div class="section" id="choosing-where-the-graphs-appear">
+<h2>Choosing where the graphs appear<a class="headerlink" href="#choosing-where-the-graphs-appear" title="Permalink to this headline">¶</a></h2>
+<p>In a notebook, we can choose between having the figures produced by Matplotlib appear “inline” (that is, within the notebook window) or in separate windows.
+For now we will use the inline option, which is the default, but can also be specified explicitly with the command</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+</pre></div>
+</div>
+<p>To activate that, uncomment the line below;
+that is, remove the leading hash character “#”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is an IPython <em>magic command</em>, indicated by starting with the percent character “%” — you can read more about them at
+https://ipython.org/ipython-doc/dev/interactive/magics.html</p>
+<p>Alternatively, one can have figures appear in separate windows, which might be useful when you want to save them to files, or zoom and pan around the image.
+That can be chosen with the magic command</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%matplotlib tk
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%matplotlib tk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As far as I know, this magic works for Windows and Linux as well as Mac OS; let me know if it does not!</p>
+<p>We need some Numpy stuff, for example to create arrays of numbers to plot.</p>
+<p>Note that this is Numpy only: Python lists and tuples do not work for this, and nor do the versions of functions like <code class="docutils literal notranslate"><span class="pre">sin</span></code> from module <code class="docutils literal notranslate"><span class="pre">math</span></code>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import a few favorites, and let them be known by their first names:</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And for now, just the one main <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> graphics function, <code class="docutils literal notranslate"><span class="pre">plot</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To access all of pyplot, add its common nickname <code class="docutils literal notranslate"><span class="pre">plt</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="producing-arrays-of-x-values-with-the-numpy-function-linspace">
+<h3>Producing arrays of “x” values with the numpy function  <code class="docutils literal notranslate"><span class="pre">linspace</span></code><a class="headerlink" href="#producing-arrays-of-x-values-with-the-numpy-function-linspace" title="Permalink to this headline">¶</a></h3>
+<p>To plot the graph of a function, we first need a collection of values for the abscissa (horizontal axis).
+The function <code>linspace</code> gives an array containing a specified number of equally spaced values over a specified interval, so that</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tenvalues</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>gives ten equally spaced values ranging from 1 to 7:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Array &#39;tenvalues&#39; is:</span><span class="se">\n</span><span class="si">{</span><span class="n">tenvalues</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array &#39;tenvalues&#39; is:
+[1.         1.66666667 2.33333333 3.         3.66666667 4.33333333
+ 5.         5.66666667 6.33333333 7.        ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Not quite what you expected?  To get values with ten <em>intervals</em> in between them, you need 11 values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tenintervals</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Array &#39;tenintervals&#39; is: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">tenintervals</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array &#39;tenintervals&#39; is: 
+ [1.  1.6 2.2 2.8 3.4 4.  4.6 5.2 5.8 6.4 7. ]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="basic-graphs-with-plot">
+<h3>Basic graphs with <code class="docutils literal notranslate"><span class="pre">plot</span></code><a class="headerlink" href="#basic-graphs-with-plot" title="Permalink to this headline">¶</a></h3>
+<p>We could use these 11 values to graph a function, but the result is a bit rough, because the given points are joined with straight line segments:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">tenintervals</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">tenintervals</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa69a063d30&gt;]
+</pre></div>
+</div>
+<img alt="../_images/graphing-with-matplotlib_23_1.png" src="../_images/graphing-with-matplotlib_23_1.png" />
+</div>
+</div>
+<p>Here we see the default behavior of joining the given points with straight lines.</p>
+<p><em>Aside:</em> That text output above the graph is a message returned as the output value of function <code class="docutils literal notranslate"><span class="pre">plot</span></code>; that is what happens when you execute a function but do not “use” its return value by either saving its result into a variable or making it input to another function.</p>
+<p>You might want to suppress that, and that can be done by saving its <code class="docutils literal notranslate"><span class="pre">return</span></code> value into a variable (which you can then ignore).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">tenintervals</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">tenintervals</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_26_0.png" src="../_images/graphing-with-matplotlib_26_0.png" />
+</div>
+</div>
+<p>(More on this output clean-up below.)</p>
+<p>For discrete data it might be better to mark each point, unconnected.
+This is done by adding a third argument, a text string specifying a marker, such as a star:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">tenvalues</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">tenvalues</span><span class="p">),</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_29_0.png" src="../_images/graphing-with-matplotlib_29_0.png" />
+</div>
+</div>
+<p>Or maybe both lines and markers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">tenvalues</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">tenvalues</span><span class="p">),</span> <span class="s1">&#39;-*&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_31_0.png" src="../_images/graphing-with-matplotlib_31_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="smoother-graphs">
+<h2>Smoother graphs<a class="headerlink" href="#smoother-graphs" title="Permalink to this headline">¶</a></h2>
+<p>It turns out that 50 points is often a good choice for a smooth-looking curve, so the function <code>linspace</code> has this as a <em>default input parameter</em>: you can omit that third input value, and get 50 points.</p>
+<p>Let’s use this to plot some trig. functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">pi</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-3.14159265 -3.01336438 -2.88513611 -2.75690784 -2.62867957 -2.5004513
+ -2.37222302 -2.24399475 -2.11576648 -1.98753821 -1.85930994 -1.73108167
+ -1.60285339 -1.47462512 -1.34639685 -1.21816858 -1.08994031 -0.96171204
+ -0.83348377 -0.70525549 -0.57702722 -0.44879895 -0.32057068 -0.19234241
+ -0.06411414  0.06411414  0.19234241  0.32057068  0.44879895  0.57702722
+  0.70525549  0.83348377  0.96171204  1.08994031  1.21816858  1.34639685
+  1.47462512  1.60285339  1.73108167  1.85930994  1.98753821  2.11576648
+  2.24399475  2.37222302  2.5004513   2.62867957  2.75690784  2.88513611
+  3.01336438  3.14159265]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># With a line through the points</span>
+<span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_35_0.png" src="../_images/graphing-with-matplotlib_35_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="multiple-curves-on-a-single-figure">
+<h2>Multiple curves on a single figure<a class="headerlink" href="#multiple-curves-on-a-single-figure" title="Permalink to this headline">¶</a></h2>
+<p>As we have seen when using <code class="docutils literal notranslate"><span class="pre">plot</span></code> to produce inline figures in a Jupyter notebook, <code class="docutils literal notranslate"><span class="pre">plot</span></code> commands in different cells produce separate figures.</p>
+<p>To combine curves on a single graph, one way is to use successive <code class="docutils literal notranslate"><span class="pre">plot</span></code> commands within the same cell:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_37_0.png" src="../_images/graphing-with-matplotlib_37_0.png" />
+</div>
+</div>
+<p>On the other hand, when plotting externally, or from a Python script file or the IPython command line, successive <code class="docutils literal notranslate"><span class="pre">plot</span></code> commands keep adding to the same figure until you explicitly specify otherwise, with the function <code class="docutils literal notranslate"><span class="pre">figure</span></code> introduced below.</p>
+<p><em>Aside on message clean up: a Juypter cell only displays the output of the last function invoked in the cell (along with anything explicitly output with a <code class="docutils literal notranslate"><span class="pre">print</span></code> function), so I only needed to intercept the message from the last <code class="docutils literal notranslate"><span class="pre">plot</span></code> command.</em></p>
+</div>
+<div class="section" id="two-curves-with-a-single-plot-command">
+<h2>Two curves with a single <code class="docutils literal notranslate"><span class="pre">plot</span></code> command<a class="headerlink" href="#two-curves-with-a-single-plot-command" title="Permalink to this headline">¶</a></h2>
+<p>Several curves can be specified in a single <code class="docutils literal notranslate"><span class="pre">plot</span></code> command (which also works with external figure windows of course.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_41_0.png" src="../_images/graphing-with-matplotlib_41_0.png" />
+</div>
+</div>
+<p>Note that even with multiple curves in a single plot command, markers can be specified on some, none or all: Matplotlib uses the difference between an array and a text string to recognize which arguments specify markers instead of data.</p>
+<p>Here are some other marker options — particularly useful if you need to print in back-and-white.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;:&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_43_0.png" src="../_images/graphing-with-matplotlib_43_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="multiple-curves-in-one-figure">
+<h2>Multiple curves in one figure<a class="headerlink" href="#multiple-curves-in-one-figure" title="Permalink to this headline">¶</a></h2>
+<p>There can be any number of curves in a single <code class="docutils literal notranslate"><span class="pre">plot</span></code> command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">5</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">6</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_45_0.png" src="../_images/graphing-with-matplotlib_45_0.png" />
+</div>
+</div>
+<p>Note the color sequence.</p>
+<p>With enough curves (more than ten? It depends on the version of matplotlib in use) the color sequence eventually repeats – but you probably don’t want that many curves on one graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">5</span><span class="p">,</span>
+                <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">6</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">7</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">8</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">9</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">10</span><span class="p">,</span>
+                <span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_48_0.png" src="../_images/graphing-with-matplotlib_48_0.png" />
+</div>
+</div>
+<p><strong>Aside on long lines of code:</strong> <em>The above illustrates a little Python coding hack: one way to have a long command continue over several lines is simply to have parentheses wrapped around the part that spans multiple lines—when a line ends with an opening parenthesis not yet matched, Python knowns that something is still to come.</em></p>
+<p><a name="with-Spyder-IPython"></a>
+<strong>Aside: using IPython magic commands in Spyder and with the IPython command line</strong></p>
+<p>If using Spyder and the IPython command line, there is a similar choice of where graphs appear, but with a few differences to note:</p>
+<ul class="simple">
+<li><p>With the “inline” option (which is again the default) figures then appear in a pane within the Spyder window.</p></li>
+<li><p>The “tk” option works exactly as with notebooks, with each figure appearing in its own window.</p></li>
+<li><p><strong>Note:</strong> Any such IPython magic commands must be entered at the IPython interactive command line, not in a Python code file.</p></li>
+</ul>
+</div>
+<div class="section" id="plotting-sequences">
+<h2>Plotting sequences<a class="headerlink" href="#plotting-sequences" title="Permalink to this headline">¶</a></h2>
+<p>A curve can also be specified by a single array of numbers: these are taken as the values of a sequence, indexed Pythonically from zero, and plotted as the ordinates (vertical values):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">tenvalues</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_52_0.png" src="../_images/graphing-with-matplotlib_52_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="plotting-curves-in-separate-figures-from-a-single-cell">
+<h2>Plotting curves in separate figures (from a single cell)<a class="headerlink" href="#plotting-curves-in-separate-figures-from-a-single-cell" title="Permalink to this headline">¶</a></h2>
+<p>From within a single Jupyter cell, or when working with Python files or in the IPython command window (as used within Spyder), successive <code class="docutils literal notranslate"><span class="pre">plot</span></code> commands keep adding to the previous figure.
+To instead start the next <code class="docutils literal notranslate"><span class="pre">plot</span></code> in a separate figure, first create a new “empty” figure, with the function <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.figure</span></code>.</p>
+<p>With a full name as long as that, it is worth importing so that it can be used on a first name basis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">figure</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">figure</span><span class="p">()</span>
+<span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_55_0.png" src="../_images/graphing-with-matplotlib_55_0.png" />
+<img alt="../_images/graphing-with-matplotlib_55_1.png" src="../_images/graphing-with-matplotlib_55_1.png" />
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">figure</span></code> command can also do other things, like attach a name or number to a figure when it is displayed externally, and change from the default size.</p>
+<p>So even though this is not always needed in a notebook, from now on each new figure will get an explicit <code class="docutils literal notranslate"><span class="pre">figure</span></code> command. Revisiting the last example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">figure</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+<span class="c1"># What does 99 do?</span>
+<span class="c1"># See with external &quot;tk&quot; display of figures,</span>
+<span class="c1"># as with `%matplotlib tk`</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_57_0.png" src="../_images/graphing-with-matplotlib_57_0.png" />
+<img alt="../_images/graphing-with-matplotlib_57_1.png" src="../_images/graphing-with-matplotlib_57_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="decorating-the-curves">
+<h2>Decorating the Curves<a class="headerlink" href="#decorating-the-curves" title="Permalink to this headline">¶</a></h2>
+<p>Curves can be decorated in different ways.  We have already seen some options, and there are many more.
+One can specify the color, line styles like dashed or dash-dot instead of solid, many different markers, and to have both markers and lines.
+As seen above, this can be controlled by an optional text string argument after the arrays of data for a curve:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;*-&#39;</span><span class="p">)</span>
+<span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_59_0.png" src="../_images/graphing-with-matplotlib_59_0.png" />
+</div>
+</div>
+<p>These three-part curve specifications can be combined:
+in the following, <code class="docutils literal notranslate"><span class="pre">plot</span></code> knows that there are two curves each specified by three arguments, not three curves each specified by just an “x-y” pair:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plotmessage</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;g-.&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;m+-.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/graphing-with-matplotlib_61_0.png" src="../_images/graphing-with-matplotlib_61_0.png" />
+</div>
+</div>
+<p><a name=Exercise-A></a></p>
+<div class="section" id="exercise-a-explore-ways-to-refine-your-figures">
+<h3>Exercise A: Explore ways to refine your figures<a class="headerlink" href="#exercise-a-explore-ways-to-refine-your-figures" title="Permalink to this headline">¶</a></h3>
+<p>There are many commands for refining the appearance of a figure after its initial creation with <code class="docutils literal notranslate"><span class="pre">plot</span></code>.
+Experiment yourself with the commands <code class="docutils literal notranslate"><span class="pre">title</span></code>, <code class="docutils literal notranslate"><span class="pre">xlabel</span></code>, <code class="docutils literal notranslate"><span class="pre">ylabel</span></code>, <code class="docutils literal notranslate"><span class="pre">grid</span></code>, and <code class="docutils literal notranslate"><span class="pre">legend</span></code>.</p>
+<p>Using the functions mentioned above, produce a refined version of the above sine and cosine graph, with:</p>
+<ul class="simple">
+<li><p>a <em>title</em> at the top</p></li>
+<li><p><em>labels</em> on both axes</p></li>
+<li><p>a <em>legend</em> identifying each curve</p></li>
+<li><p>a <em>grid</em> or “graph paper” background, to make it easier to judge details like where a function has zeros.</p></li>
+</ul>
+<p><a name=Exercise-B></a></p>
+</div>
+<div class="section" id="exercise-b-saving-externally-displayed-figures-to-files">
+<h3>Exercise B: Saving externally displayed figures to files<a class="headerlink" href="#exercise-b-saving-externally-displayed-figures-to-files" title="Permalink to this headline">¶</a></h3>
+<p>Then work out how to save this figure to a file (probably in format PNG), and turn that in, along with the file used to create it.</p>
+<p>This ismost readily done with externally displayed figures; that is, with <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">tk</span></code>.
+Making that change to <code class="docutils literal notranslate"><span class="pre">tk</span></code> in a notebook requires then restarting the kernel for it to take effect; use the menu <em>Kernel</em> above and select “Restart Kernel and Run All Cells …*</p>
+<p>For your own edification, explore other features of externally displayed figures, like zooming and panning: this cannot be done with inline figures.</p>
+</div>
+<div class="section" id="getting-help-from-the-documentation">
+<h3>Getting help from the documentation<a class="headerlink" href="#getting-help-from-the-documentation" title="Permalink to this headline">¶</a></h3>
+<p>For some of these, you will probably need to read up. For simple things, there is a function <code class="docutils literal notranslate"><span class="pre">help</span></code>, which is best used in the IPython interactive input window (within Spyder for example), but I will illustrate it here.</p>
+<p>The entry for <code class="docutils literal notranslate"><span class="pre">plot</span></code> is unusually long! It provides details about all the options mentioned above, like marker styles.
+So this might be a good time to learn how to clear the output in a cell, to unclutter the view: either use the above menu “Edit* or open the menu with Control-click or right-click on the code cell; then use “Clear Outputs” to remove the output of just the current cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The jargon used in <code class="docutils literal notranslate"><span class="pre">help</span></code> can be confusing at first; fortunately there are other online sources that are more readable and better illustrated, like http://scipy-lectures.github.io/intro/matplotlib/matplotlib.html mentioned above.</p>
+<p>However, that does not cover everything; the official pyplot documentation at http://matplotlib.org/1.3.1/api/pyplot_api.html is more complete: explore its search feature.</p>
+</div>
+<div class="section" id="p-s-a-shortcut-revealed-the-ipython-magic-command-pylab">
+<h3>P. S. A shortcut revealed: the IPython “magic” command pylab<a class="headerlink" href="#p-s-a-shortcut-revealed-the-ipython-magic-command-pylab" title="Permalink to this headline">¶</a></h3>
+<p>So far I have encourage you to use explicit, specific import commands, because this is good practice when developing larger programs.
+However, for quick interactive work in the IPython command window and Jupyter notebooks, there is a sometimes useful shortcut: the IPython “magic” command</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%pylab
+</pre></div>
+</div>
+<p>adds everything from Numpy and the main parts of Matplotlib, including all the items imported above. (This creates the so-called <strong>pylab</strong> environment: that name combines “Python” with “Matlab”, as its goal is to produce an environment very similar to Matlab.)</p>
+<p>Note that such “magic” commands are part of the IPython interactive interface, not Python language commands, so they must be used either in a IPython notebook or in the IPython command window (within Spyder), not in a Python “.py” file.</p>
+<p>However, there is a way to access magics in python scripts; the above can be achieved in such a file with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>get_ipython().run_line_magic(&#39;pylab&#39;, &#39;&#39;)
+</pre></div>
+</div>
+<p>and the magic</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+</pre></div>
+</div>
+<p>is achieved with</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>get_ipython().run_line_magic(&#39;matplotlib&#39;, &#39;inline&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="recursion.html" title="previous page">Recursion (vs iteration)</a>
+    <a class='right-next' id="next-link" href="array-operations-and-linear-algebra.html" title="next page">Numpy Array Operations and Linear Algebra</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brenton LeMesurier, College of Charleston<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

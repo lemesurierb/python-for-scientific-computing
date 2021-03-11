@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iteration with for &#8212; Python for Scientific Computing</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Iteration with while" href="iteration-with-while.html" />
+    <link rel="prev" title="Code Files, Modules, and an Integrated Development Environment" href="code-files-modules-IDEs.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python for Scientific Computing</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Python with Numpy and Matplotlib
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction-to-python-and-jupyter-notebooks.html">
+   Introduction to Python and Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-variables-lists-tuples-numpy-arrays.html">
+   Python Variables, Including Lists and Tuples, and Arrays from Package Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decisions-with-if-else-elif.html">
+   Decision Making With if, else, and elif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Defining and Using Python Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="code-files-modules-IDEs.html">
+   Code Files, Modules, and an Integrated Development Environment
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-while.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     while
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recursion.html">
+   Recursion (vs iteration)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphing-with-matplotlib.html">
+   Plotting Graphs with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array-operations-and-linear-algebra.html">
+   Numpy Array Operations and Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summation-and-integration.html">
+   Summation and Integration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random-numbers-and-simulation.html">
+   Random Numbers, Histograms, and a Simulation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="formatted-output-and-some-text-string-manipulation.html">
+   Formatted Output and Some Text String Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes-objects-attributes-methods.html">
+   Classes, Objects, Attributes, Methods: Very Basic Object-Oriented Programming in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="displaying-python-code-in-markdown-text-cells.html">
+   Displaying Python Code in Markdown Text Cells
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exception-handling.html">
+   Exceptions and Exception Handling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy-tools-for-linear-algebra.html">
+   Package Scipy and More Tools for Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="romberg-integration.html">
+   The Romberg Method
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/iteration-with-for.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/iteration-with-for.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repeating-a-predetermined-number-of-times-with-for-loops">
+   Repeating a predetermined number of times, with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+   loops
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-a">
+     Example A
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repeating-for-a-range-of-equally-spaced-integers-with-range">
+   Repeating for a range of equally spaced integers with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     range()
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-b">
+     Example B
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ranges-that-start-elsewhere">
+     Ranges that start elsewhere
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-c">
+       Example C
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ranges-of-equally-spaced-integers">
+     Ranges of equally-spaced integers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-d">
+       Example D
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#brief-exercise-a">
+       Brief Exercise A
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decreasing-sequences-of-integers">
+     Decreasing sequences of integers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-e">
+       Example E
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#brief-exercise-b">
+       Brief Exercise B
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-f-the-first-n-factorials">
+       Example F: The first n factorials
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-c">
+       Exercise C
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="iteration-with-for">
+<h1>Iteration with <code class="docutils literal notranslate"><span class="pre">for</span></code><a class="headerlink" href="#iteration-with-for" title="Permalink to this headline">¶</a></h1>
+<p><em>Estimated time to complete:</em> one hour.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The last fundamental tool for describing algorithms is <em>iteration</em> or “looping”: tasks that repeat the same sequence of actions repeatedly, with possible variation like using different input values at each repetition.</p>
+<p>In Python — as in most programming languages — there are two versions:</p>
+<ul class="simple">
+<li><p>when the number of iterations to be done is determined before we start — done with <code class="docutils literal notranslate"><span class="pre">for</span></code> loops;</p></li>
+<li><p>when we must decide “on the fly” whether we are finished by checking some conditions as part of each repetition — done with <code class="docutils literal notranslate"><span class="pre">while</span></code> loops.</p></li>
+</ul>
+<p>This Unit covers the first case, of <code class="docutils literal notranslate"><span class="pre">for</span></code> loops; the more flexible <code class="docutils literal notranslate"><span class="pre">while</span></code> loops will be introduced in <a class="reference internal" href="iteration-with-while.html"><span class="doc std std-doc">Unit 6</span></a>.</p>
+<p><a name=forloops></a></p>
+</div>
+<div class="section" id="repeating-a-predetermined-number-of-times-with-for-loops">
+<h2>Repeating a predetermined number of times, with <code class="docutils literal notranslate"><span class="pre">for</span></code> loops<a class="headerlink" href="#repeating-a-predetermined-number-of-times-with-for-loops" title="Permalink to this headline">¶</a></h2>
+<p>We can apply the same sequence of commands for each of a list of values by using a <code class="docutils literal notranslate"><span class="pre">for</span></code> statement, followed by an indented list of statements.</p>
+<div class="section" id="example-a">
+<h3>Example A<a class="headerlink" href="#example-a" title="Permalink to this headline">¶</a></h3>
+<p>We can compute the square roots of several numbers.
+Here I give those numbers in a tuple (i.e., in parentheses).
+They could just as well be in a list [i.e., in brackets.]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">3141592653589793</span><span class="p">,</span> <span class="mi">121</span><span class="p">):</span>
+    <span class="n">square_root_of_x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The square root of </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">g</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">square_root_of_x</span><span class="si">:</span><span class="s1">g</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The square root of 1 is 1
+The square root of 2 is 1.41421
+The square root of 4 is 2
+The square root of 9 is 3
+The square root of 20 is 4.47214
+The square root of 1e+06 is 1000
+The square root of 3.14159e+15 is 5.60499e+07
+The square root of 121 is 11
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Aside A: Using</strong> “<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">module</span></code>” <strong>instead of</strong> “<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">object</span></code>”</p>
+<p>Note the way that I handled importing from a module this time:
+the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement just specifies that the module is wanted, and then I refer to each item used from it by its “full name”, prefixed by the module name, connected with a period.</p>
+<p>This is often the recommended way to do things in larger collections of code, because it makes immediately clear where the object (here <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>) comes from, without having to look up to the top of the file to check the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement.
+On the other hand, the <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">item</span></code> syntax is slightly more compact, and makes things read more like usual mathematical notation. So especially with mathematical objects like <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> or <code class="docutils literal notranslate"><span class="pre">pi</span></code> where the name is fairly unambiguous, I typically use this shorter form.</p>
+<p><strong>Aside B: Controlling the appearance of printed output</strong></p>
+<p>Note also the new way that I inserted the values of the variables <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">square_root_of_x</span></code> into the string of text to be printed.
+Each <code class="docutils literal notranslate"><span class="pre">:g</span></code> appended in the <code class="docutils literal notranslate"><span class="pre">{...}</span></code> specified using the general (“g”) format for a real number:
+with this, large enough values (like 1000000) get displayed in scientific notation (with an exponent) to save space.</p>
+<p>Later we will see refinements of this output format control, like specifying how many significant digits or correct decimal places are displayed, and ensuring that values on successive lines appear neatly aligned in columns: for more information, see the <a class="reference internal" href="formatted-output-and-some-text-string-manipulation.html"><span class="doc std std-doc">supplementary notes on formatted output and text string manipulation</span></a>.</p>
+</div>
+</div>
+<div class="section" id="repeating-for-a-range-of-equally-spaced-integers-with-range">
+<h2>Repeating for a range of equally spaced integers with <code class="docutils literal notranslate"><span class="pre">range()</span></code><a class="headerlink" href="#repeating-for-a-range-of-equally-spaced-integers-with-range" title="Permalink to this headline">¶</a></h2>
+<p>One very common choice for the values to use in a <code>for</code> loop is a range of consecutive integers, or more generally, equally spaced integers.
+The first n natural numbers are given by <code class="docutils literal notranslate"><span class="pre">range(n)</span></code> — remember that for Python, the natural numbers start with 0, so this range is the <em>semi-open interval of integers</em> <span class="math notranslate nohighlight">\([0,n) = \{i: 0 \leq i &lt; n\}\)</span>, and so <span class="math notranslate nohighlight">\(n\)</span> is the first value <em>not</em> in the range!</p>
+<div class="section" id="example-b">
+<h3>Example B<a class="headerlink" href="#example-b" title="Permalink to this headline">¶</a></h3>
+<p>Let’s combine this with a previous example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> is a multiple of 4&#39;</span><span class="p">)</span>
+    <span class="k">elif</span>  <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># A multiple of 2 but not of 4, or we would have stopped with the above &quot;match&quot;.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> is an odd multiple of 2&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> is odd&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 is a multiple of 4
+1 is odd
+2 is an odd multiple of 2
+3 is odd
+4 is a multiple of 4
+5 is odd
+6 is an odd multiple of 2
+7 is odd
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ranges-that-start-elsewhere">
+<h3>Ranges that start elsewhere<a class="headerlink" href="#ranges-that-start-elsewhere" title="Permalink to this headline">¶</a></h3>
+<p>To specify a range of integers starting at integer <span class="math notranslate nohighlight">\(m\)</span> instead of at zero, use</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>range(m, n)
+</pre></div>
+</div>
+<p>Again, the terminal value n is the first value <em>not</em> in the range, so this gives <span class="math notranslate nohighlight">\([m, n) = \{i: m \leq i &lt; n\}\)</span></p>
+<div class="section" id="example-c">
+<h4>Example C<a class="headerlink" href="#example-c" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> cubed is </span><span class="si">{</span><span class="n">i</span><span class="o">**</span><span class="mi">3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 cubed is 1000
+11 cubed is 1331
+12 cubed is 1728
+13 cubed is 2197
+14 cubed is 2744
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Aside C: yet more on formatting printed output</strong></p>
+<p>Note that in the stuff to insert into the text string for printing, each item can be an <em>expression</em> (a formula), which gets evaluated to produce the value to be printed.</p>
+</div>
+</div>
+<div class="section" id="ranges-of-equally-spaced-integers">
+<h3>Ranges of equally-spaced integers<a class="headerlink" href="#ranges-of-equally-spaced-integers" title="Permalink to this headline">¶</a></h3>
+<p>The final, most general use of the function <code>range</code> is generating integers with equal spacing other than 1, by giving it three arguments:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>range(start, stop, increment)
+</pre></div>
+</div>
+<p>So to generate just even integers, specify a spacing of two:</p>
+<div class="section" id="example-d">
+<h4>Example D<a class="headerlink" href="#example-d" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">even</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;2^</span><span class="si">{</span><span class="n">even</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="mi">2</span><span class="o">**</span><span class="n">even</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2^0 = 1
+2^2 = 4
+2^4 = 16
+2^6 = 64
+2^8 = 256
+</pre></div>
+</div>
+</div>
+</div>
+<p><a name=Exercise-A></a></p>
+</div>
+<div class="section" id="brief-exercise-a">
+<h4>Brief Exercise A<a class="headerlink" href="#brief-exercise-a" title="Permalink to this headline">¶</a></h4>
+<p>Even though the first argument has the “default” of zero, I did not omit it here:
+what would happen if I did so?</p>
+</div>
+</div>
+<div class="section" id="decreasing-sequences-of-integers">
+<h3>Decreasing sequences of integers<a class="headerlink" href="#decreasing-sequences-of-integers" title="Permalink to this headline">¶</a></h3>
+<p>We sometimes want to count down, which is done by using a negative value for the increment in function <code class="docutils literal notranslate"><span class="pre">range</span></code>.</p>
+<div class="section" id="example-e">
+<h4>Example E<a class="headerlink" href="#example-e" title="Permalink to this headline">¶</a></h4>
+<p><strong>Before</strong> running the following code, work out what it will do — this might be a bit surprising at first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> seconds&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 seconds
+9 seconds
+8 seconds
+7 seconds
+6 seconds
+5 seconds
+4 seconds
+3 seconds
+2 seconds
+1 seconds
+</pre></div>
+</div>
+</div>
+</div>
+<p><a name=Exercise-B></a></p>
+</div>
+<div class="section" id="brief-exercise-b">
+<h4>Brief Exercise B<a class="headerlink" href="#brief-exercise-b" title="Permalink to this headline">¶</a></h4>
+<p>What is the last output, and why?</p>
+</div>
+<div class="section" id="example-f-the-first-n-factorials">
+<h4>Example F: The first n factorials<a class="headerlink" href="#example-f-the-first-n-factorials" title="Permalink to this headline">¶</a></h4>
+<p>I will illustrate two methods; with and without using an array to store the values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We first need a value for n.</span>
+<span class="c1"># It will be the input argument to the function for each method.</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Method 1: producing a numpy array of the factorials after displaying them one at a time.</span>
+
+<span class="sd">We need to create an array of the desired length before we compute the values that go into it,</span>
+<span class="sd">and one strategy is to create an initially empty array.</span>
+<span class="sd">By default array elements are real numbers rather than integers,</span>
+<span class="sd">so here see how to specify integers, with optional argument `dtype=int`)</span>
+<span class="sd">Aside: another option is complex numbers: `dtype=complex`.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="c1"># Create a numpy array of n integers, values not yet specified:</span>
+<span class="n">factorials</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">factorials</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;0! = </span><span class="si">{</span><span class="n">factorials</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">factorials</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">factorials</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">! = </span><span class="si">{</span><span class="n">factorials</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The whole array is </span><span class="si">{</span><span class="n">factorials</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0! = 1
+1! = 1
+2! = 2
+3! = 6
+4! = 24
+The whole array is [ 1  1  2  6 24]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that if we just want to print them one at a time inside the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, we do not need the array;
+we can just keep track of the most recent value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Method 2: storing just the most recent value[s] needed.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">i_factorial</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;0! = </span><span class="si">{</span><span class="n">i_factorial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">i_factorial</span> <span class="o">*=</span> <span class="n">i</span>  <span class="c1"># Note: this &quot;*=&quot; notation gives a short-hand for &quot;i_factorial = i_factorial * i&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">! = </span><span class="si">{</span><span class="n">i_factorial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0! = 1
+1! = 1
+2! = 2
+3! = 6
+4! = 24
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Aside C: The shorthands <code class="docutils literal notranslate"><span class="pre">+=</span></code>, <code class="docutils literal notranslate"><span class="pre">*=</span></code>, <code class="docutils literal notranslate"><span class="pre">-=</span></code> etc.</strong></p>
+<p>In the above code, the notation</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`i_factorial *= i`
+</pre></div>
+</div>
+<p>means</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`i_factorial = i_factorial * i`.
+</pre></div>
+</div>
+<p>The same pattern works for many arithmetic operators, so that for example</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sum += f(x)*h
+</pre></div>
+</div>
+<p>means</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sum = sum + f(x)*h
+</pre></div>
+</div>
+<p>which could be useful in computing a sum to approximate a definite integral.</p>
+<p>Apart from the slight space-saving, this is an example of the <strong>Don’t Repeat Yourself</strong> principle,
+and can both improve readability and help to avoid mistakes.
+For example, with a more complicated expression like</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A[2*i-1, 3*j+i+4] = A[2*i-1, 3*j+i+4] + f(i, j)
+</pre></div>
+</div>
+<p>you might have to look carefully to check that the array reference on each side is the same, whereas that is made clear by saying</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    A[2*i-1, 3*j+i+4] += f(i, j)
+</pre></div>
+</div>
+<p>Also, if that weird array indexing has to be changed, say to</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    A[2*i-1, 4*j+i+3] += f(i, j)
+</pre></div>
+</div>
+<p>one only has to make that change in one place.</p>
+<p><a name=Exercise-C></a></p>
+</div>
+<div class="section" id="exercise-c">
+<h4>Exercise C<a class="headerlink" href="#exercise-c" title="Permalink to this headline">¶</a></h4>
+<p>Write a Python function that inputs a natural number <span class="math notranslate nohighlight">\(n\)</span>, and with the help of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, computes and prints the first <span class="math notranslate nohighlight">\(n\)</span> Fibonacci numbers.
+Note that these are defined by the formulas
+$<span class="math notranslate nohighlight">\(
+\begin{split}
+F_0 &amp;= 1\\
+F_1 &amp;= 1\\
+F_i &amp;= F_{i-1} + F_{i-2} \text{ for } i \geq 2
+\end{split}
+\)</span>$
+where I count from zero, because Python.</p>
+<p><em>For now</em> it is fine for your function to deliver its output to the screen with function <code class="docutils literal notranslate"><span class="pre">print()</span></code> and not use any <code class="docutils literal notranslate"><span class="pre">return</span></code> line;
+we will come back to this issue below.</p>
+<p>Follow method 2 above, without the need for an array.</p>
+<p><strong>Plan before you code.</strong> Before you create any Python code, work out the mathematical, algorithmic details of this process and write down your plan in a mix of words and mathematical notation — and then check that with me before you proceed.
+My guideline here is that this initial written description should make sense even to someone who knows little or nothing about Python or any other programming language.</p>
+<p>One issue in particular is how to deal with the first two values; the ones not given by the recursion formula
+<span class="math notranslate nohighlight">\(F_i = F_{i-1} + F_{i-2}\)</span>.
+In fact, this <em>initialization</em> is often an important first step to deal with when designing an iterative algorithm.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="code-files-modules-IDEs.html" title="previous page">Code Files, Modules, and an Integrated Development Environment</a>
+    <a class='right-next' id="next-link" href="iteration-with-while.html" title="next page">Iteration with <code class="docutils literal notranslate"><span class="pre">while</span></code></a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brenton LeMesurier, College of Charleston<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

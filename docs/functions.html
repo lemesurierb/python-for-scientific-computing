@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Defining and Using Python Functions &#8212; Python for Scientific Computing</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Code Files, Modules, and an Integrated Development Environment" href="code-files-modules-IDEs.html" />
+    <link rel="prev" title="Decision Making With if, else, and elif" href="decisions-with-if-else-elif.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python for Scientific Computing</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Python with Numpy and Matplotlib
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction-to-python-and-jupyter-notebooks.html">
+   Introduction to Python and Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-variables-lists-tuples-numpy-arrays.html">
+   Python Variables, Including Lists and Tuples, and Arrays from Package Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decisions-with-if-else-elif.html">
+   Decision Making With if, else, and elif
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Defining and Using Python Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="code-files-modules-IDEs.html">
+   Code Files, Modules, and an Integrated Development Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-for.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-while.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     while
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recursion.html">
+   Recursion (vs iteration)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphing-with-matplotlib.html">
+   Plotting Graphs with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array-operations-and-linear-algebra.html">
+   Numpy Array Operations and Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summation-and-integration.html">
+   Summation and Integration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random-numbers-and-simulation.html">
+   Random Numbers, Histograms, and a Simulation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="formatted-output-and-some-text-string-manipulation.html">
+   Formatted Output and Some Text String Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes-objects-attributes-methods.html">
+   Classes, Objects, Attributes, Methods: Very Basic Object-Oriented Programming in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="displaying-python-code-in-markdown-text-cells.html">
+   Displaying Python Code in Markdown Text Cells
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exception-handling.html">
+   Exceptions and Exception Handling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy-tools-for-linear-algebra.html">
+   Package Scipy and More Tools for Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="romberg-integration.html">
+   The Romberg Method
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notes">
+     Notes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables-created-inside-a-function-definition-are-local-to-it">
+   Variables “created” inside a function definition are local to it
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#note-with-tuples-parentheses-are-optional">
+     Note: With tuples, parentheses are optional
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#single-member-tuples-not-an-oxymoron">
+   Single-member tuples: not an oxymoron
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-argument-lists-are-also-tuples">
+   Input argument lists are also tuples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-a-a-robust-function-for-solving-quadratics">
+     Exercise A. A robust function for solving quadratics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing">
+     Testing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-organization">
+     Notebook organization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#keyword-arguments-specifying-input-values-by-name">
+   Keyword arguments: specifying input values by name
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-as-input-to-other-functions">
+   Functions as input to other functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-input-arguments-and-default-values">
+   Optional input arguments and default values
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arguments-with-default-values-must-come-after-all-others-in-the-def">
+     Arguments with default values must come after all others in the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       def
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-b-a-function-with-function-inputs-and-exceptions">
+       Exercise B. A function with function inputs (and exceptions)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-topic-anonymous-functions-a-k-a-lambda-functions">
+   Optional topic: anonymous functions, a.k.a. lambda functions
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="defining-and-using-python-functions">
+<h1>Defining and Using Python Functions<a class="headerlink" href="#defining-and-using-python-functions" title="Permalink to this headline">¶</a></h1>
+<p><em>Estimated time to complete:</em> one to two hours.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Our main objective is to learn how to define our own Python <em>functions,</em> and see how these can help us to deal with sub-tasks done repeatedly (with variation) within a larger task.</p>
+<p>Typically, core mathematical tasks (like evaluating a function <span class="math notranslate nohighlight">\(f(x)\)</span> or solving an equation <span class="math notranslate nohighlight">\(f(x) = 0\)</span>) will be done within Python functions designed to communicate with other parts of the Python code, rather than getting their input interactively or returning results by displaying them on the screen.</p>
+<p>In this course, the notebook approach is prioritized;
+that makes it easier to produce a single document that combines text and mathematical information, Python code, and computed results, making for a more “literate”, understandable presentation.</p>
+<p><strong>Example A. A very simple function for computing the mean of two numbers</strong></p>
+<p>To illustrate the syntax, let’s start with a very simple function: computing the mean of two numbers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">mean_of_a_and_b</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">mean_of_a_and_b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This can be used as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_of_2_and_6</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The mean of 2 and 6 is&#39;</span><span class="p">,</span> <span class="n">mean_of_2_and_6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean of 2 and 6 is 4.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>The definition of a function begins with the command <code>def</code></p></li>
+<li><p>This is followed by:</p>
+<ul class="simple">
+<li><p>a name for the function,</p></li>
+<li><p>a parenthesized, comma-seperated list of variable names, which are called the input <em>arguments</em>,</p></li>
+<li><p>and finally a <strong>colon</strong>, which as always introduces an indented list or <em>block</em> of statements; in this case the statements that describe the actions performed by the function.</p></li>
+<li><p>Indentation is done with <strong>four spaces</strong>. (Tabs are also legal but advised against, so please forget that I mentioned them.)</p></li>
+<li><p>The end of the block of code for the function is indicated simply by the end of the indentation; there is no <code class="docutils literal notranslate"><span class="pre">end</span></code> line as in some other programming languages. The last line of the definiton is often a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, but there can also be multiple <code class="docutils literal notranslate"><span class="pre">return</span></code> statements at various places in the code block, or no <code class="docutils literal notranslate"><span class="pre">return</span></code> at all.</p></li>
+</ul>
+</li>
+<li><p>When using the function, it is given a list of expressions (variable names or values or more elaborate formulas) and the values of these are <em>copied</em> to the corresponding internal variables given by the list of input arguments mentioned in the function’s <code class="docutils literal notranslate"><span class="pre">def</span></code> line.
+(However, with lists and arrays, the idea of <em>copying</em> will require clarification!)</p></li>
+<li><p>As soon as the function gets to a statement beginning with <code class="docutils literal notranslate"><span class="pre">return</span></code>, it evaluates the expression on that line, and ends, sending back this as the value of the function.</p></li>
+<li><p>The name used for a variable into which the value of a function is assigned (here, <code class="docutils literal notranslate"><span class="pre">mean_of_2_and_6</span></code>) does not have to be the same as the name used internally in the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement (here, <code class="docutils literal notranslate"><span class="pre">mean_of_a_and_b</span></code>).</p></li>
+</ol>
+<p>In general, what follows <code class="docutils literal notranslate"><span class="pre">return</span></code> is an expression (formula) that is evaluated to get the value that is then sent back; listing the name of one or more variables is just one simple way to do this. For example, the above function <code class="docutils literal notranslate"><span class="pre">mean</span></code> could instead be defined with</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def mean(a, b):
+    return (a + b)/2
+</pre></div>
+</div>
+<p>Also, multiple values can be given in a <code class="docutils literal notranslate"><span class="pre">return</span></code> line; they are then output as a <a class="reference external" href="python-variables-lists-tuples-numpy-arrays.html#Tuples">tuple</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mean_and_difference</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_and_difference</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.5, 3)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="variables-created-inside-a-function-definition-are-local-to-it">
+<h2>Variables “created” inside a function definition are local to it<a class="headerlink" href="#variables-created-inside-a-function-definition-are-local-to-it" title="Permalink to this headline">¶</a></h2>
+<p>A more subtle point: all the variables appearing in the function’s <code class="docutils literal notranslate"><span class="pre">def</span></code> line (here <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>) and any created inside with an assignment statement (here just <code class="docutils literal notranslate"><span class="pre">mean_of_a_and_b</span></code>) are purely <em>local</em> to the function; they do not exist outside the function.  For that reason, when you call a function, you have to do something with the return value, like assign it to a variable (as done here with <code class="docutils literal notranslate"><span class="pre">mean_of_a_and_b</span></code>) or use it as input to another function (see below).</p>
+<p><strong>Aside:</strong> there is a way that a variable can be shared between a function and the rest of the file in which the function definition appears; so-called <em>global variables</em>, using <code class="docutils literal notranslate"><span class="pre">global</span></code> statements.
+However, it is generally good practice to avoid them as much as possible, so I will do so in this course.</p>
+<p>To illustrate this point about local variables, let us look for the values of variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">mean_of_a_and_b</span></code> in the code after the function is called:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean310</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After using function mean:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After using function mean:
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">d00dfc4a617e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After using function mean:&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;a&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mean_of_a_and_b =&#39;</span><span class="p">,</span> <span class="n">mean_of_a_and_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">9555</span><span class="n">f19d8b66</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mean_of_a_and_b =&#39;</span><span class="p">,</span> <span class="n">mean_of_a_and_b</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;mean_of_a_and_b&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mean310 = </span><span class="si">{</span><span class="n">mean310</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean310 = 6.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>The same name can even be used locally in a function and also outside it in the same file; they are different objects with independent values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;At the start of function &quot;double&quot;, a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;A bit later in that function, a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Before calling function &quot;double&quot;, a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;After calling function &quot;double&quot;, b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">, but a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> again.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before calling function &quot;double&quot;, a = 1
+At the start of function &quot;double&quot;, a = 1
+A bit later in that function, a = 2
+After calling function &quot;double&quot;, b = 2, but a = 1 again.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Warning about keeping indentation correct:</strong> The line <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1</span></code> is after the function definition, not part of it, as indicated by the reduced indentation; however Python code editing tools like JuperLab and Spyder will default to indenting each new line as much as the previous one when you end a line by typing “return”.
+Thus, when typing in a function <code class="docutils literal notranslate"><span class="pre">def</span></code>, it is important to manually reduce the indentation (“dedent”) at the end of the definition.
+The same is true for all statements that end with a colon and so control a following block of code, like <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code> and <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
+<p><strong>Example B. More on multiple output values, with tuples</strong></p>
+<p>Often, a function computes and returns several quantities; one example is a function version of our quadratic equation solver, which takes three input parameters and computes a pair of roots.
+Here is a very basic function for this, ignoring for now possible problems like division by zero:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a name=solve_quadratic></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve_quadratic</span><span class="p">(</span><span class="n">c_2</span><span class="p">,</span> <span class="n">c_1</span><span class="p">,</span> <span class="n">c_0</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Note: c_i is the coefficient of x^i</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">discriminant</span> <span class="o">=</span> <span class="n">c_1</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">c_0</span> <span class="o">*</span> <span class="n">c_2</span>
+    <span class="n">root0</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">c_1</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">discriminant</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">c_2</span><span class="p">)</span>
+    <span class="n">root1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">c_1</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">discriminant</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">c_2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">root0</span><span class="p">,</span> <span class="n">root1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now what is returned is a <a class="reference external" href="python-variables-lists-tuples-numpy-arrays.html#Tuples">tuple</a>, and it can be stored into a single variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roots</span> <span class="o">=</span> <span class="n">solve_quadratic</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Variable &quot;roots&quot; has value </span><span class="si">{</span><span class="n">roots</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;One root is </span><span class="si">{</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> and the other is </span><span class="si">{</span><span class="n">roots</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable &quot;roots&quot; has value (4.0, 1.0)
+One root is 4.0 and the other is 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, it is often convenient to store each returned value into a separate variable, using tuple notation at left in the assignment statement:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">rootA</span><span class="p">,</span> <span class="n">rootB</span><span class="p">)</span> <span class="o">=</span> <span class="n">solve_quadratic</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;One root is </span><span class="si">{</span><span class="n">rootA</span><span class="si">}</span><span class="s1"> and the other is </span><span class="si">{</span><span class="n">rootB</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One root is 4.0 and the other is 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="note-with-tuples-parentheses-are-optional">
+<h3>Note: With tuples, parentheses are optional<a class="headerlink" href="#note-with-tuples-parentheses-are-optional" title="Permalink to this headline">¶</a></h3>
+<p>When tuples were introduced in the section on <a class="reference internal" href="python-variables-lists-tuples-numpy-arrays.html"><span class="doc std std-doc">Python variables</span></a>, they were described as “a parenthesized list of values separated by commas”, but note that above, no parentheses were used: the <code class="docutils literal notranslate"><span class="pre">return</span></code> line was</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>return root0, root1
+</pre></div>
+</div>
+<p>not</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>return (root0, root1)
+</pre></div>
+</div>
+<p>though the latter version would also work.</p>
+<p>In fact, you can always omit the parentheses when specifying a tuple, just giving a comma-separated list of values, even on the left side of an assignment statement.
+Thus, the above example could also be done like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rootA</span><span class="p">,</span> <span class="n">rootB</span> <span class="o">=</span> <span class="n">solve_quadratic</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;One root is </span><span class="si">{</span><span class="n">rootA</span><span class="si">}</span><span class="s1"> and the other is </span><span class="si">{</span><span class="n">rootB</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One root is 4.0 and the other is 1.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="single-member-tuples-not-an-oxymoron">
+<h2>Single-member tuples: not an oxymoron<a class="headerlink" href="#single-member-tuples-not-an-oxymoron" title="Permalink to this headline">¶</a></h2>
+<p>Tuples can have a single member, but then to make it clear to Python that it is a tuple, there must always be a comma after that sole element.
+Compare:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuple_a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tuple_a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuple_b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tuple_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_a_tuple_c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">not_a_tuple_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="input-argument-lists-are-also-tuples">
+<h2>Input argument lists are also tuples<a class="headerlink" href="#input-argument-lists-are-also-tuples" title="Permalink to this headline">¶</a></h2>
+<p>You can also think of the collection of input arguments to a function as a tuple.
+This works nicely for composition of functions: the output tuple from one function is passed as the input tuple for the next, as we will see soon.</p>
+<p>The input to and output from functions is probably the main place that we will use tuples in this course.</p>
+<p>The ability to store the collection of output values from a function in a single tuple can also be convenient when you wish to store that collection for later use.</p>
+<p>Here I illustrate the strategy of dividing a task into several smaller, simpler pieces, each of which can then be reused independently.
+Step 1 is to compute the roots; step 2 is to print them, sorted into increasing order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printtwonumbersinorder</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Print two numbers in increasing order.</span>
+<span class="sd">    Warning: this assumes real input values,</span>
+<span class="sd">    and is not very stylish when the two numbers are equal.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="c1"># Easy; they are already in order</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The results, in order, are </span><span class="si">{</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">g</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">g</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># swap them:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The results, in order, are </span><span class="si">{</span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">g</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">g</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bothroots</span> <span class="o">=</span> <span class="n">solve_quadratic</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The unsorted tuple of roots is&#39;</span><span class="p">,</span> <span class="n">bothroots</span><span class="p">)</span>
+<span class="n">printtwonumbersinorder</span><span class="p">(</span><span class="n">bothroots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The unsorted tuple of roots is (4.0, 1.0)
+The results, in order, are 1 and 4
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can compose functions, and so do these two steps in one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printtwonumbersinorder</span><span class="p">(</span><span class="n">solve_quadratic</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The results, in order, are -6 and 1
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Aside: documenting functions with triple quoted comments, and <code class="docutils literal notranslate"><span class="pre">help</span></code></strong></p>
+<p>Note that the code block for function <code class="docutils literal notranslate"><span class="pre">printtwonumbersinorder</span></code> starts with a comment surrounded by a triple of quote characters at each end, and this sort of comment can continue over multiple lines.</p>
+<p>In addition to making it easier to have long comments, this sort of comment provides some <em>self-documentation</em> for the function — not just in the code for the function, but also in the Python <code class="docutils literal notranslate"><span class="pre">help</span></code> system:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">printtwonumbersinorder</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function printtwonumbersinorder in module __main__:
+
+printtwonumbersinorder(numbers)
+    Print two numbers in increasing order.
+    Warning: this assumes real input values,
+    and is not very stylish when the two numbers are equal.
+</pre></div>
+</div>
+</div>
+</div>
+<p>About the reference to <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">__main__</span></code>: that is the standard name for code that is not explicitly part of any other module, such as anything defined in the current file rathetr than imported from elsewhere.  Compare to what we get when a function comes from another module:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">sqrt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on built-in function sqrt in module math:
+
+sqrt(x, /)
+    Return the square root of x.
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you might expect, all objects provided by standard modules like <code class="docutils literal notranslate"><span class="pre">math</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> have some documentation provided; <code class="docutils literal notranslate"><span class="pre">help</span></code> is useful in cases like this where you cannot see the Python code that defines the function.</p>
+<p>When a function <code class="docutils literal notranslate"><span class="pre">def</span></code> lacks such a <em>self-documentation</em> comment, <code class="docutils literal notranslate"><span class="pre">help</span></code> still tells us something; the syntax for using it, and where it come from:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function mean in module __main__:
+
+mean(a, b)
+</pre></div>
+</div>
+</div>
+</div>
+<p><a name=Exercise-A></a></p>
+<div class="section" id="exercise-a-a-robust-function-for-solving-quadratics">
+<h3>Exercise A. A robust function for solving quadratics<a class="headerlink" href="#exercise-a-a-robust-function-for-solving-quadratics" title="Permalink to this headline">¶</a></h3>
+<p>Refine the above function <code class="docutils literal notranslate"><span class="pre">solve_quadratic</span></code> for solving quadratics, and make it <strong>robust</strong>; handling all possible input triples of real numbers in a “reasonable” way.
+(If you have done Exercise C of the section on <span class="xref myst">decision making</span>, this is essentially just integrating that code into a function.)</p>
+<p>Not all choices of those coefficients will give two distinct real roots, so work out all the possibilities, and try to handle them all.</p>
+<ol class="simple">
+<li><p>Its input arguments are three real (floating point) numbers, giving the coefficients <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(c\)</span> of the quadratic equation <span class="math notranslate nohighlight">\(ax^2 + bx + c = 0\)</span>.</p></li>
+<li><p>It always <strong>returns</strong> a result (usually a pair of numerical values for the roots) for any “genuine” quadratic equation, meaning one with <span class="math notranslate nohighlight">\(a \ne 0\)</span>.</p></li>
+<li><p>If the quadratic has real roots, these are output with a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement — no <code class="docutils literal notranslate"><span class="pre">print</span></code> commands in the function.</p></li>
+<li><p>In cases where it is not a genuine quadratic, or there are no real roots, return the special value <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p>As an <strong>optional</strong> further refinement: in the “prohibited” case <span class="math notranslate nohighlight">\(a = 0\)</span>, have it produce a custom error message, by “raising an exception”. We will learn more about handling “exceptional” situations later, but for now you could just use the command:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">ZeroDivisionError</span><span class="p">(</span><span class="s2">&quot;The coefficient &#39;a&#39; of x^2 cannot have the value zero.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The coefficient &#39;a&#39; of x^2 cannot have the value zero.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ultimately put this in a cell in a Jupyter notebook (suggested name: “Unit03.ipynb”);
+if you prefer to develop it with Spyder, I suggest the filename “quadratic_solver_c.py”</p>
+</div>
+<div class="section" id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
+<p>Test and demonstrate this function with a list of test cases, including:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(2x^2 - 10x + 8 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^2 -2x + 1 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^2 + 2 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^2 + 6x + 25 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(4x - 10 = 0\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="notebook-organization">
+<h3>Notebook organization<a class="headerlink" href="#notebook-organization" title="Permalink to this headline">¶</a></h3>
+<p>To start developing good notebook organizational practice:</p>
+<ul class="simple">
+<li><p>As always, start with a <a class="reference external" href="#top">title cell</a> giving a title, your name and the date.</p></li>
+<li><p>Follow this by an <a class="reference external" href="#Introduction">introduction cell</a> giving a brief description of what the notebook does — see above; follow the links here!</p></li>
+<li><p>Put any <code class="docutils literal notranslate"><span class="pre">import</span></code> statements straight after the introduction, before any other Python code.</p></li>
+<li><p>Define the function in one cell (more generally, define each function in its own cell).</p></li>
+<li><p>Follow the function definition[s] with the test cases, each in its own cell.</p></li>
+<li><p>If anything noteworthy arises in a test case, add comments on this in a Markdown after that test case cell.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="keyword-arguments-specifying-input-values-by-name">
+<h2>Keyword arguments: specifying input values by name<a class="headerlink" href="#keyword-arguments-specifying-input-values-by-name" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes a function has numerous input arguments, and then it might be hard to remember what order they go in.</p>
+<p>Even with just a few arguments, there can be room for confusion;
+for example, in the above function <a class="reference external" href="#solve_quadratic"><code class="docutils literal notranslate"><span class="pre">solve_quadratic</span></code></a>
+do we give the coefficients in order <code class="docutils literal notranslate"><span class="pre">c_2,</span> <span class="pre">c_1,</span> <span class="pre">c_0</span></code> as for <span class="math notranslate nohighlight">\(c_2 x^2 + c_1 x + c_0 = 0\)</span>, or in order <code class="docutils literal notranslate"><span class="pre">c_0,</span> <span class="pre">c_1,</span> <span class="pre">c_2</span></code> as for <span class="math notranslate nohighlight">\(c_0 + c_1 x + c_2 x^2 = 0\)</span>?</p>
+<p>To improve readability and help avoid errors, Python has a nice optional feature of specifying input arguments <em>by name</em>; they are then called <em>keyword arguments</em>,m adn can be given in any order.</p>
+<p>For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">moreroots</span> <span class="o">=</span> <span class="n">solve_quadratic</span><span class="p">(</span><span class="n">c_1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c_2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c_0</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">printtwonumbersinorder</span><span class="p">(</span><span class="n">moreroots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The results, in order, are -5 and 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>When you are specifying the parameters by name, there is no need to have them in any particular order.
+For example, if you like to write polynomials “from the bottom up”, as with <span class="math notranslate nohighlight">\(-10 + 3x + x^2\)</span>, which is <span class="math notranslate nohighlight">\(c_0 + c_1 x + c_2 x^2\)</span>, you could do this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sameroots</span> <span class="o">=</span> <span class="n">solve_quadratic</span><span class="p">(</span><span class="n">c_0</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">c_1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c_2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">printtwonumbersinorder</span><span class="p">(</span><span class="n">sameroots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The results, in order, are -5 and 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="functions-as-input-to-other-functions">
+<h2>Functions as input to other functions<a class="headerlink" href="#functions-as-input-to-other-functions" title="Permalink to this headline">¶</a></h2>
+<p>In mathematical computing, we often wish to define a (Python) function that does something with a (mathematical) function.  A simple example is implementing the basic difference quotient approximation of the derivative</p>
+<div class="math notranslate nohighlight">
+\[f'(x) = Df(x) \approx \frac{f(x+h) - f(x)}{h}\]</div>
+<p>with a function <code class="docutils literal notranslate"><span class="pre">Df_approximation</span></code>, whose input will include the function <span class="math notranslate nohighlight">\(f\)</span> as well as the two numbers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<p>Python makes this fairly easy, since Python functions, like numbers, can be the values of variables, and given as input to other functions in the same way: in fact the statement</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">...</span><span class="p">):</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>creates variable <code class="docutils literal notranslate"><span class="pre">f</span></code> with this function as its value.</p>
+<p>So here is a suitable definition:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Df_approximation</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and one way to use it is as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">8</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">1e-4</span>
+
+<span class="n">Df_x0_h</span> <span class="o">=</span> <span class="n">Df_approximation</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Df(</span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">) is approximately </span><span class="si">{</span><span class="n">Df_x0_h</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Df(1) is approximately -5.999800000004996
+</pre></div>
+</div>
+</div>
+</div>
+<p>A bit more about keyword arguments: they csn be mixed wiht positonal arguments, but once an argument is given in keyword forms all later ones must be also.
+Thus it works to do this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Dfxh</span> <span class="o">=</span> <span class="n">Df_approximation</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Df(</span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">) is approximately </span><span class="si">{</span><span class="n">Dfxh</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Df(1) is approximately -5.99999799888451
+</pre></div>
+</div>
+</div>
+</div>
+<p>but the following fails:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Dfxh</span> <span class="o">=</span> <span class="n">Df_approximation</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Df(2) is approximately </span><span class="si">{</span><span class="n">Dfxh</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-32-b7c7c80a79b9&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="n">Dfxh</span> <span class="o">=</span> <span class="n">Df_approximation</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">)</span>
+                                    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: positional argument follows keyword argument
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="optional-input-arguments-and-default-values">
+<h2>Optional input arguments and default values<a class="headerlink" href="#optional-input-arguments-and-default-values" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it makes sense for a function to have default values for arguments, so that not all argument values need to be specified.
+For example, the value <span class="math notranslate nohighlight">\(h= 10^{-8}\)</span> is in some sense close to “ideal”, so let us make that the default, by giving <code class="docutils literal notranslate"><span class="pre">h</span></code> a “suggested” value as part of the function’s (new, improved) definition:
+<a name=line31></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Df_approximation</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The value for input argument <code>h</code> can now optionally be omitted when the function is used, getting the same result as before:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Df_x0_h</span> <span class="o">=</span> <span class="n">Df_approximation</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Df(</span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">) is approximately </span><span class="si">{</span><span class="n">Df_x0_h</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Df(1) is approximately -5.999999963535174
+</pre></div>
+</div>
+</div>
+</div>
+<p>or we can specify a value when we want to use a different one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">big_h</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">Df_x0_h</span> <span class="o">=</span> <span class="n">Df_approximation</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">big_h</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Using h=</span><span class="si">{</span><span class="n">big_h</span><span class="si">}</span><span class="s1">, Df(</span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">) is approximately </span><span class="si">{</span><span class="n">Df_x0_h</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using h=0.01, Df(1) is approximately -5.979999999999919
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="arguments-with-default-values-must-come-after-all-others-in-the-def">
+<h3>Arguments with default values must come after all others in the <code class="docutils literal notranslate"><span class="pre">def</span></code><a class="headerlink" href="#arguments-with-default-values-must-come-after-all-others-in-the-def" title="Permalink to this headline">¶</a></h3>
+<p>When default values are given for some arguments but not all, these must appear in the function definition after all the arguments without default values, as is the case with <code class="docutils literal notranslate"><span class="pre">h=1e-8</span></code> above.</p>
+<p><a name=Exercise-B></a></p>
+<div class="section" id="exercise-b-a-function-with-function-inputs-and-exceptions">
+<h4>Exercise B. A function with function inputs (and exceptions)<a class="headerlink" href="#exercise-b-a-function-with-function-inputs-and-exceptions" title="Permalink to this headline">¶</a></h4>
+<p>A usually more accurate formula for approximating derivatives is the <em>Centered Difference Rule</em>
+$<span class="math notranslate nohighlight">\(Df(x) \approx \frac{f(x+h) - f(x-h)}{2 h}\)</span>$</p>
+<ol class="simple">
+<li><p>Write a function that uses this, with usage</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">Dfxh</span> <span class="pre">=</span> <span class="pre">Df_CD_approximation(f,</span> <span class="pre">x,</span> <span class="pre">h)</span></code>
+2. Give <span class="math notranslate nohighlight">\(h\)</span> the default value <span class="math notranslate nohighlight">\(10^{-12}\)</span>
+3. Raise an exception if the forbidden value <span class="math notranslate nohighlight">\(h=0\)</span> is used.
+4. Choose and implement a few test cases.</p>
+<p>You may do this all in the same notebook as above.</p>
+<p>If you wish to also do this in a Python code file, use a different file than the quadratic solving exercise; maybe named “centered_differences.py”.</p>
+</div>
+</div>
+</div>
+<div class="section" id="optional-topic-anonymous-functions-a-k-a-lambda-functions">
+<h2>Optional topic: anonymous functions, a.k.a. lambda functions<a class="headerlink" href="#optional-topic-anonymous-functions-a-k-a-lambda-functions" title="Permalink to this headline">¶</a></h2>
+<p><strong>Note:</strong>
+<em>Some students might be interested in “anonymous functions”, also known as “lambda functions”, so here is a brief introduction.
+However, this topic is not needed for this course; it is only a convenience, and if you are new to computer programming, I suggest that you skip this section for now.</em></p>
+<p>One inconvenience in the above example with <code class="docutils literal notranslate"><span class="pre">Df_approximation</span></code> is that we had to first put the values of each input argument into three variables.  Sometimes we would rather skip that step, and indeed we have seen that we could put the numerical argument values in directly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Df_x_h</span> <span class="o">=</span> <span class="n">Df_approximation</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The derivative is approximately </span><span class="si">{</span><span class="n">Df_x_h</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The derivative is approximately 6.000200000002565
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, we still needed to define the function first, and give it a name, <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+<p>If the function is only ever used this one time, we can avoid this, specifying the function directly as an input argument value to the function <code class="docutils literal notranslate"><span class="pre">Df_approximation</span></code>, without first naming it.  This is done with what is called an <em>anonymous function</em>, or for mysterious historical reasons, a <em>lambda function</em>.</p>
+<p>For the example above, we can do this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Df_x_h</span> <span class="o">=</span> <span class="n">Df_approximation</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The derivative is approximately </span><span class="si">{</span><span class="n">Df_x_h</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The derivative is approximately 6.000200000002565
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can even do it all in a single line by composing two functions, <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">Df_approximation</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The derivative is approximately </span><span class="si">{</span><span class="n">Df_approximation</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The derivative is approximately 6.000200000002565
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, the expression</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lambda x: 2*x**2 - 10*x + 8
+</pre></div>
+</div>
+<p>creates a function that is mathematically the same as function <code class="docutils literal notranslate"><span class="pre">p</span></code> above; it just has no name.</p>
+<p>In general, the form is a single-line expression with four elements:</p>
+<ul class="simple">
+<li><p>It starts with <code class="docutils literal notranslate"><span class="pre">lambda</span></code></p></li>
+<li><p>next is a list of input argument names, separated by commas if there are more than one (but no parentheses!?)</p></li>
+<li><p>then a colon</p></li>
+<li><p>and finally, a formula involving the input variables.</p></li>
+</ul>
+<p>We can, if we want, assign a lambda function to a variable, so we could have defined <code class="docutils literal notranslate"><span class="pre">p</span></code> as</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>though I am not sure if that has any advantage over doing this with <code class="docutils literal notranslate"><span class="pre">def</span></code>:</p>
+<p><a name=line38-add-return></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As an example of that, and also of having a lambda function that returns multiple values, here is yet another quadratic equation solver:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solve_quadratic</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">(</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The roots of 2*x**2 - 10*x + 8 are </span><span class="si">{</span><span class="n">solve_quadratic</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The roots of 2*x**2 - 10*x + 8 are (4.0, 1.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Anonymous functions have most of the fancy features of functions created with <code class="docutils literal notranslate"><span class="pre">def</span></code>, with the big exception that they must be defined on a single line.  For example, they also allow the use of keyword arguments, allowing the input argument values to be specified by keyword in any order. It is also possible to give default values to some arguments at the end of the argument list.</p>
+<p>To show off a few of these refinements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printtwonumbersinorder</span><span class="p">(</span><span class="n">solve_quadratic</span><span class="p">(</span><span class="n">b</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The results, in order, are 1 and 4
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="decisions-with-if-else-elif.html" title="previous page">Decision Making With if, else, and elif</a>
+    <a class='right-next' id="next-link" href="code-files-modules-IDEs.html" title="next page">Code Files, Modules, and an Integrated Development Environment</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brenton LeMesurier, College of Charleston<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

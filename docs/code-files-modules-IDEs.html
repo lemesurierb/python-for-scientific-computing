@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Files, Modules, and an Integrated Development Environment &#8212; Python for Scientific Computing</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Iteration with for" href="iteration-with-for.html" />
+    <link rel="prev" title="Defining and Using Python Functions" href="functions.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python for Scientific Computing</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Python with Numpy and Matplotlib
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction-to-python-and-jupyter-notebooks.html">
+   Introduction to Python and Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-variables-lists-tuples-numpy-arrays.html">
+   Python Variables, Including Lists and Tuples, and Arrays from Package Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decisions-with-if-else-elif.html">
+   Decision Making With if, else, and elif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Defining and Using Python Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Code Files, Modules, and an Integrated Development Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-for.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-while.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     while
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recursion.html">
+   Recursion (vs iteration)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphing-with-matplotlib.html">
+   Plotting Graphs with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array-operations-and-linear-algebra.html">
+   Numpy Array Operations and Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summation-and-integration.html">
+   Summation and Integration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random-numbers-and-simulation.html">
+   Random Numbers, Histograms, and a Simulation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="formatted-output-and-some-text-string-manipulation.html">
+   Formatted Output and Some Text String Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes-objects-attributes-methods.html">
+   Classes, Objects, Attributes, Methods: Very Basic Object-Oriented Programming in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="displaying-python-code-in-markdown-text-cells.html">
+   Displaying Python Code in Markdown Text Cells
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exception-handling.html">
+   Exceptions and Exception Handling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy-tools-for-linear-algebra.html">
+   Package Scipy and More Tools for Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="romberg-integration.html">
+   The Romberg Method
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/code-files-modules-IDEs.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/code-files-modules-IDEs.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integrated-development-environments-spyder-et-al">
+   Integrated Development Environments: Spyder et al
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-a-testing-and-demonstrations-in-a-python-code-file">
+     Exercise A. testing and demonstrations in a Python code file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-b-using-code-from-a-python-code-file-with-command-import">
+     Exercise B. using code from a Python code file with command
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       import
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-c-start-building-a-module-of-functions-you-create-in-this-course">
+     Exercise C. Start building a module of functions you create in this course.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#submit-all-files">
+     Submit all files!
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="code-files-modules-and-an-integrated-development-environment">
+<h1>Code Files, Modules, and an Integrated Development Environment<a class="headerlink" href="#code-files-modules-and-an-integrated-development-environment" title="Permalink to this headline">¶</a></h1>
+<p><em>Estimated time to complete:</em> one hour.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>So far, we have worked on each topic within a single Jupyter notebook.</p>
+<p>However, in some stuations it is better to put some Python code into a separate file, sometimes called a <em>module</em>, and then either execute that code directly, or access it from a notebook or from another code file.
+We have already used a few modules like <code class="docutils literal notranslate"><span class="pre">math</span></code> in a way that illustrates one advantage: gathering Python functions and variables that can then be reused by variouys notebooks without reproducing the same code in each one.</p>
+<p>That will be useful when you have functions that you wish to use repeatedly within different tasks and from different notebooks or different Python code files; for example if you build a collection of Python functions for common linear algebra calculations.</p>
+</div>
+<div class="section" id="integrated-development-environments-spyder-et-al">
+<h2>Integrated Development Environments: Spyder et al<a class="headerlink" href="#integrated-development-environments-spyder-et-al" title="Permalink to this headline">¶</a></h2>
+<p>To work with files of Python code and create moduels fo ue from witin notebooks, it is convenient to use a software tool that supports creating and editing such files and then running the code: a so-called <em>Integrated Development Environment</em>, or “IDE”.</p>
+<p>For that task, these notes describe the use of <a class="reference external" href="https://www.spyder-ide.org/">Spyder</a>, [from “Scientic PYthon Development enviRonment] which is included in Anaconda and can be opened from the Anaconda Navigator.
+However there are several other widely used alternatives, such as the fairly rudimentary <a class="reference external" href="https://realpython.com/python-idle/">IDLE</a>
+and the more advanced <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm</a>
+One reon for peferring Spyder over IDLE is that Spyder integrates the “Scientific Python” packages Numpy, Matlpotlib and Scipy that we will be using.</p>
+<p><a name=Exercise-A></a></p>
+<div class="section" id="exercise-a-testing-and-demonstrations-in-a-python-code-file">
+<h3>Exercise A. testing and demonstrations in a Python code file<a class="headerlink" href="#exercise-a-testing-and-demonstrations-in-a-python-code-file" title="Permalink to this headline">¶</a></h3>
+<p>To start learning the use of the Spyder IDE, we will reproduce Exercise A of the section on <span class="xref myst">functions</span>.</p>
+<ol>
+<li><p>Open Spyder (from Anaconda-Navigator).</p></li>
+<li><p>In Spyder, create a new file, using menu “File”, item “New File …”.</p></li>
+<li><p>Save this file into the folder numerical-methods” (or whatver you naemd it) for this course, using the name “exercise_4a.py”.</p></li>
+<li><p>Sypder puts some stuff in the newlt created “emplty” file, in particular a “triple quoted comment” near the top.
+Edi this commeny to include a <strong>title</strong>, <strong>your name</strong>, the <strong>date</strong> and some <strong>decription</strong>, and maybe some contact information.
+Mine would look something like:<br />
+<code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span>&#160; <span class="pre">For</span>&#160; <span class="pre">Exercise</span> <span class="pre">A</span>&#160; <span class="pre">&#64;author:</span> <span class="pre">Brenton</span> <span class="pre">LeMesurier</span> <span class="pre">&lt;lemesurierb&#64;cofc.edu&gt;</span>&#160; <span class="pre">Last</span> <span class="pre">revised</span> <span class="pre">January</span> <span class="pre">0,</span> <span class="pre">1970</span>&#160; <span class="pre">&quot;&quot;&quot;</span></code></p>
+<p>This special triple quoting notation is used for introductory comments and documention for a file, as well as for functions; we will see one nice use of this soon, with the function <code class="docutils literal notranslate"><span class="pre">help</span></code>.</p>
+</li>
+<li><p>Immediately after these openign comments, copy in any <code class="docutils literal notranslate"><span class="pre">import</span></code> statements needed by the function <code class="docutils literal notranslate"><span class="pre">solve_quadratic</span></code> in Exercise 3A.</p></li>
+</ol>
+<p><strong>Note:</strong> It is good practice for all imports to be near the top of a code file or notebook, straight after any introductory text.</p>
+<ol class="simple">
+<li><p>Copy the code for the function <code class="docutils literal notranslate"><span class="pre">solve_quadratic</span></code> developed in Exercise 3A into this file, below the <code class="docutils literal notranslate"><span class="pre">import</span></code> sttemwnt (if any).</p></li>
+<li><p>Then copy in the code for the test cases after the function definition.</p></li>
+<li><p>Run the code in the folder, using the “Run” button atop Spyder (it looks like a triangular “Play” icon).</p></li>
+</ol>
+<p><strong>Aside:</strong> For more substantial Python code development, it can be better to first develop the code in a file like this, using Spyder (or another IDE), and then copy the working code into a notebook for presentation; that allows you to make use of more powerful testing and debugging tools.</p>
+<p>On the other hand, there is a potential drawback with putting the function definition and test cases in one Python file: if an error (“exception”) occurs for any test case, the rest of the file is not executed.
+For now, avoid this by having at most one such exceptional case, and putting it last.</p>
+<p>We will later learn several better ways of handling this sort of situation — one seen already is the above approach of testing from separate cells in a notebook.</p>
+<p><a name=Exercise-B></a></p>
+</div>
+<div class="section" id="exercise-b-using-code-from-a-python-code-file-with-command-import">
+<h3>Exercise B. using code from a Python code file with command <code class="docutils literal notranslate"><span class="pre">import</span></code><a class="headerlink" href="#exercise-b-using-code-from-a-python-code-file-with-command-import" title="Permalink to this headline">¶</a></h3>
+<p>Functions (and variables) defined in a code file can be used from a notebook or from another code file by importing: effectively we have created a <em>module</em> <code class="docutils literal notranslate"><span class="pre">exercise_A</span></code>, and can access the function <code class="docutils literal notranslate"><span class="pre">solve_quadratic</span></code> defined there from a notebook by using the command
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">exercise_A</span> <span class="pre">import</span> <span class="pre">solve_quadratic</span></code></p>
+<p>Note that the base-name of the file is now being used as a variable name — that is why code file names should follow the same naming rules as variable names.</p>
+<p>To experiment a bit more with defining and using your own modules:</p>
+<ol class="simple">
+<li><p>Create a notebook <code class="docutils literal notranslate"><span class="pre">modules.ipynb</span></code> — you can cut and paste from this notebook, but leave out irrelevant stuff: copy mainly the headings and the statements of exercises.</p></li>
+<li><p>Make a copy of the file <code class="docutils literal notranslate"><span class="pre">exercise_A.py</span></code> named <code class="docutils literal notranslate"><span class="pre">functions.py</span></code>.</p></li>
+<li><p>In that file <code class="docutils literal notranslate"><span class="pre">functions_exercise.py</span></code>, remove the test cases for Exercise A, and add the definition of function <code class="docutils literal notranslate"><span class="pre">Df_CD_approximation</span></code> that was created in Exercise A of the section <span class="xref myst">Functions</span>.
+So now this new file defines a module <code class="docutils literal notranslate"><span class="pre">functions</span></code> which just defines these functions, not running any test cases using them or producing any output when run.</p></li>
+<li><p>In notebook <code class="docutils literal notranslate"><span class="pre">modules.ipynb</span></code>, import these two functions, and below the <code class="docutils literal notranslate"><span class="pre">import</span></code> command,
+copy in the test case cells used in section [Functions] for both Exercises A and B.</p></li>
+<li><p>Run the noteboook.</p></li>
+</ol>
+<p>This combination of notebook with importing from a module can give a notebook presentation that is more concise and less cluttered; this will be a distict advantage at times later in the course where the collection of function definitions is far longer.</p>
+<p><a name=Exercise-C></a></p>
+</div>
+<div class="section" id="exercise-c-start-building-a-module-of-functions-you-create-in-this-course">
+<h3>Exercise C. Start building a module of functions you create in this course.<a class="headerlink" href="#exercise-c-start-building-a-module-of-functions-you-create-in-this-course" title="Permalink to this headline">¶</a></h3>
+<p>Make a copy of the module file <code class="docutils literal notranslate"><span class="pre">modules.py</span></code> with a name like <code class="docutils literal notranslate"><span class="pre">numerical_methods.py</span></code>.</p>
+<p>As the course progresses, you will create some more useful functions, such as one for solving equations using Newton’s method: gather those in this module <code class="docutils literal notranslate"><span class="pre">numerical_methods</span></code>.</p>
+</div>
+<div class="section" id="submit-all-files">
+<h3>Submit all files!<a class="headerlink" href="#submit-all-files" title="Permalink to this headline">¶</a></h3>
+<p>When done, as usual submit all files produced: the notebooks and modules.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="functions.html" title="previous page">Defining and Using Python Functions</a>
+    <a class='right-next' id="next-link" href="iteration-with-for.html" title="next page">Iteration with <code class="docutils literal notranslate"><span class="pre">for</span></code></a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brenton LeMesurier, College of Charleston<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

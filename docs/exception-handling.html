@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exceptions and Exception Handling &#8212; Python for Scientific Computing</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Package Scipy and More Tools for Linear Algebra" href="scipy-tools-for-linear-algebra.html" />
+    <link rel="prev" title="Displaying Python Code in Markdown Text Cells" href="displaying-python-code-in-markdown-text-cells.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python for Scientific Computing</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Python with Numpy and Matplotlib
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction-to-python-and-jupyter-notebooks.html">
+   Introduction to Python and Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-variables-lists-tuples-numpy-arrays.html">
+   Python Variables, Including Lists and Tuples, and Arrays from Package Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decisions-with-if-else-elif.html">
+   Decision Making With if, else, and elif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Defining and Using Python Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="code-files-modules-IDEs.html">
+   Code Files, Modules, and an Integrated Development Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-for.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-while.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     while
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recursion.html">
+   Recursion (vs iteration)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphing-with-matplotlib.html">
+   Plotting Graphs with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array-operations-and-linear-algebra.html">
+   Numpy Array Operations and Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summation-and-integration.html">
+   Summation and Integration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random-numbers-and-simulation.html">
+   Random Numbers, Histograms, and a Simulation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="formatted-output-and-some-text-string-manipulation.html">
+   Formatted Output and Some Text String Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes-objects-attributes-methods.html">
+   Classes, Objects, Attributes, Methods: Very Basic Object-Oriented Programming in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="displaying-python-code-in-markdown-text-cells.html">
+   Displaying Python Code in Markdown Text Cells
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Exceptions and Exception Handling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy-tools-for-linear-algebra.html">
+   Package Scipy and More Tools for Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="romberg-integration.html">
+   The Romberg Method
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/exception-handling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/exception-handling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handing-and-raising-exceptions">
+   Handing and Raising Exceptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#catching-any-exceptional-situation-and-handling-it-specially">
+   Catching any “exceptional” situation and handling it specially
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-try-except-structure-does-two-things">
+   This try/except structure does two things:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#catching-and-displaying-the-exception-error-message">
+   Catching and displaying the exception error message
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handling-specific-exception-types">
+   Handling specific exception types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handling-multiple-exception-types">
+   Handling multiple exception types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-a-while-try-except-pattern-for-interactive-programs">
+   Summary: a while-try-except pattern for interactive programs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-d-a-add-handling-for-multiple-types-of-exception">
+     Exercise D-A. Add handling for multiple types of exception
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-d-b-handling-division-by-zero-in-newton-s-method">
+   Exercise D-B. Handling division by zero in Newton’s method
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a name=top></a></p>
+<div class="section" id="exceptions-and-exception-handling">
+<h1>Exceptions and Exception Handling<a class="headerlink" href="#exceptions-and-exception-handling" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This unit addresses  the almost inevitable occurence of unanticipated errors in code, and methods to detect and handle <em>exceptions</em>.</p>
+<p><strong>Note:</strong> This “notebook plus modules” organization is useful when the collection of function definitions usd in a project is lengthy, and would otherwise clutter up the notebook and hamper readability.</p>
+</div>
+<div class="section" id="handing-and-raising-exceptions">
+<h2>Handing and Raising Exceptions<a class="headerlink" href="#handing-and-raising-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Ideally, when we write a computer program for a mathematical task, we will plan in advance for every possibility, and design an algorithm to handle all of them.
+For example, anticipating the possibility of division by zero and avoiding it is a common issue in making a program <strong>robust</strong>.</p>
+<p>However this is not always feasible; in particular while still developing a program, there might be situations that you have not yet anticipated, and so it can be useful to write a program that will detect problems that occur while the program is running, and handle them in a reasonable way.</p>
+<p>We start by considering a very basic code for our favorite example, solving quadratic equations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">root_of_discriminant</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">root_of_discriminant</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">),</span>  <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">root_of_discriminant</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># An easy and familiar test case</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Let&#39;s solve the quadratic equation </span><span class="si">%g</span><span class="s2">*x**2 + </span><span class="si">%g</span><span class="s2">*x + </span><span class="si">%g</span><span class="s2"> = 0&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+<span class="p">(</span><span class="n">root0</span><span class="p">,</span> <span class="n">root1</span><span class="p">)</span> <span class="o">=</span> <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The roots are </span><span class="si">%g</span><span class="s2"> and </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">root0</span><span class="p">,</span> <span class="n">root1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Let&#39;s solve the quadratic equation 2*x**2 + -10*x + 8 = 0
+The roots are 1 and 4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Try it repeatedly, with some “destructive testing”: seek input choices that will cause various problems.</p>
+<p>For this, it is is useful to have an interactive loop to ask for test cases:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testing: add some hard cases, interactively</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Let&#39;s solve some quadratic equations a*x**2 + b*x + c = 0&quot;</span><span class="p">)</span>
+<span class="n">keepgoing</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">keepgoing</span><span class="p">:</span> 
+    <span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;a = &quot;</span><span class="p">))</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;b = &quot;</span><span class="p">))</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;c = &quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solving the quadratic equation </span><span class="si">%g</span><span class="s2">*x**2 + </span><span class="si">%g</span><span class="s2">*x + </span><span class="si">%g</span><span class="s2"> = 0&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+    <span class="p">(</span><span class="n">root0</span><span class="p">,</span> <span class="n">root1</span><span class="p">)</span> <span class="o">=</span> <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The roots are </span><span class="si">%g</span><span class="s2"> and </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">root0</span><span class="p">,</span> <span class="n">root1</span><span class="p">))</span>
+    <span class="n">yesorno</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Do you want to try another case? [Answer y/n]: &quot;</span><span class="p">)</span>
+    <span class="n">keepgoing</span> <span class="o">=</span> <span class="n">yesorno</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">}</span>  <span class="c1"># examine the first letter only!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let me know what problems you found; we will work on detecting and handling all of them.</p>
+<p>Some messages I get ended with these lines, whose meaning we will explore:</p>
+<ul class="simple">
+<li><p>ZeroDivisionError: float division by zero</p></li>
+<li><p>ValueError: math domain error</p></li>
+<li><p>ValueError: could not convert string to float …</p></li>
+</ul>
+</div>
+<div class="section" id="catching-any-exceptional-situation-and-handling-it-specially">
+<h2>Catching any “exceptional” situation and handling it specially<a class="headerlink" href="#catching-any-exceptional-situation-and-handling-it-specially" title="Permalink to this headline">¶</a></h2>
+<p>Here is a minimal way to catch all problems, and at least apologize for failing to solve the equation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exception handling, version 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Let&#39;s solve some quadratic equations a*x**2 + b*x + c = 0&quot;</span><span class="p">)</span>
+<span class="n">keepgoing</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">keepgoing</span><span class="p">:</span> 
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;a = &quot;</span><span class="p">))</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;b = &quot;</span><span class="p">))</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;c = &quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solving the quadratic equation </span><span class="si">%g</span><span class="s2">*x**2 + </span><span class="si">%g</span><span class="s2">*x + </span><span class="si">%g</span><span class="s2"> = 0&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+        <span class="p">(</span><span class="n">root0</span><span class="p">,</span> <span class="n">root1</span><span class="p">)</span> <span class="o">=</span> <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The roots are </span><span class="si">%g</span><span class="s2"> and </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">root0</span><span class="p">,</span> <span class="n">root1</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Something went wrong; sorry!&quot;</span><span class="p">)</span>
+    <span class="n">yesorno</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Do you want to try another case? [Answer y/n]: &quot;</span><span class="p">)</span>
+    <span class="n">keepgoing</span> <span class="o">=</span> <span class="n">yesorno</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">}</span>    <span class="c1"># examine the first letter only, so &quot;nevermore&quot; means &quot;no&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="this-try-except-structure-does-two-things">
+<h2>This try/except structure does two things:<a class="headerlink" href="#this-try-except-structure-does-two-things" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>it first <em>tries</em> to run the code in the (indented) block introduced by the colon after the statement <code class="docutils literal notranslate"><span class="pre">try</span></code></p></li>
+<li><p>if anything goes wrong (in Python jargon, if any <strong>exception</strong> occurs) it gives up on that <code class="docutils literal notranslate"><span class="pre">try</span></code> block and runs the code in the block under the statement <code class="docutils literal notranslate"><span class="pre">except</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="catching-and-displaying-the-exception-error-message">
+<h2>Catching and displaying the exception error message<a class="headerlink" href="#catching-and-displaying-the-exception-error-message" title="Permalink to this headline">¶</a></h2>
+<p>One thing has been lost though: the messages like “float division by zero” as seen above, which say what sort of exception occured.</p>
+<p>We can regain some of that, by having <code>except</code> statement save that message into a variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exception handling, version 2: displaying the exception</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Let&#39;s solve some quadratic equations a*x**2 + b*x + c = 0&quot;</span><span class="p">)</span>
+<span class="n">keepgoing</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">keepgoing</span><span class="p">:</span> 
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;a = &quot;</span><span class="p">))</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;b = &quot;</span><span class="p">))</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;c = &quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solving the quadratic equation </span><span class="si">%g</span><span class="s2">*x**2 + </span><span class="si">%g</span><span class="s2">*x + </span><span class="si">%g</span><span class="s2"> = 0&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+        <span class="p">(</span><span class="n">root0</span><span class="p">,</span> <span class="n">root1</span><span class="p">)</span> <span class="o">=</span> <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The roots are </span><span class="si">%g</span><span class="s2"> and </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">root0</span><span class="p">,</span> <span class="n">root1</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">what_just_happened</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Something went wrong; sorry!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The exception is: &quot;</span><span class="p">,</span> <span class="n">what_just_happened</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The exception message is: &quot;</span><span class="p">,</span> <span class="n">what_just_happened</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="c1">#if what_just_happened == &quot;float division by zero&quot;:</span>
+        <span class="c1">#if what_just_happened[:5] == &quot;float&quot;:</span>
+        <span class="c1">#    print(&quot;You cannot divide by zero.&quot;)</span>
+    <span class="n">yesorno</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Do you want to try another case? [Answer y/n]: &quot;</span><span class="p">)</span>
+    <span class="n">keepgoing</span> <span class="o">=</span> <span class="n">yesorno</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">}</span>    <span class="c1"># examine the first letter only, so &quot;nevermore&quot; means &quot;no&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This version detects  every possible exception and handles them all in the same way, whether it be a problem in arithmetic (like the dreaded division by zero) or the user making a typing error in the input of the coefficients. Try answering “one” when asked for a coefficient!</p>
+</div>
+<div class="section" id="handling-specific-exception-types">
+<h2>Handling specific exception types<a class="headerlink" href="#handling-specific-exception-types" title="Permalink to this headline">¶</a></h2>
+<p>Python divides exceptions into many types, and the statement <code class="docutils literal notranslate"><span class="pre">except</span></code> can be given the name of an exception type, so that it then handles only that type of exception.</p>
+<p>For example, in the case of division be zero, where we originally got a message</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ZeroDivisionError: float division by zero
+</pre></div>
+</div>
+<p>we can catch that particular exception and handle it specially:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exception handling, version 3: as above, but with special handing for division by zero.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Let&#39;s solve some quadratic equations a*x**2 + b*x + c = 0&quot;</span><span class="p">)</span>
+<span class="n">keepgoing</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">keepgoing</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;a = &quot;</span><span class="p">))</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;b = &quot;</span><span class="p">))</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;c = &quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solving the quadratic equation </span><span class="si">%g</span><span class="s2">*x**2 + </span><span class="si">%g</span><span class="s2">*x + </span><span class="si">%g</span><span class="s2"> = 0&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+        <span class="p">(</span><span class="n">root0</span><span class="p">,</span> <span class="n">root1</span><span class="p">)</span> <span class="o">=</span> <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The roots are </span><span class="si">%g</span><span class="s2"> and </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">root0</span><span class="p">,</span> <span class="n">root1</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">what_just_happened</span><span class="p">:</span>  <span class="c1"># Note the &quot;CamelCase&quot;: capitalization of each word</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Division by zero; the first coefficient cannot be zero!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please try again.&quot;</span><span class="p">)</span>
+    <span class="n">yesorno</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Do you want to try another case? [Answer y/n]: &quot;</span><span class="p">)</span>
+    <span class="n">keepgoing</span> <span class="o">=</span> <span class="n">yesorno</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">}</span>  <span class="c1"># examine the first letter only, so &quot;nevermore&quot; means &quot;no&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="handling-multiple-exception-types">
+<h2>Handling multiple exception types<a class="headerlink" href="#handling-multiple-exception-types" title="Permalink to this headline">¶</a></h2>
+<p>However, this still crashes with other errors, lke typos in the input.
+To detect several types of exception, and handle each in an appropriate way, there can be a list of <code>except</code> statements, each with a block of code to run when that exception is detected.
+The type <code>Exception</code> was already seen above; it is just the totally generic case, so can be used as a catch-all after a list of exception types have been handled.</p>
+<p>Experiment a bit, and you will see how these multiple <code class="docutils literal notranslate"><span class="pre">except</span></code> statements are used:</p>
+<ul class="simple">
+<li><p>the first <code class="docutils literal notranslate"><span class="pre">except</span></code> clause that matches is used, and any later ones are ignored;</p></li>
+<li><p>only if none matches does the code go back to simply “crashing”, as with version 0 above.</p></li>
+</ul>
+</div>
+<div class="section" id="summary-a-while-try-except-pattern-for-interactive-programs">
+<h2>Summary: a while-try-except pattern for interactive programs<a class="headerlink" href="#summary-a-while-try-except-pattern-for-interactive-programs" title="Permalink to this headline">¶</a></h2>
+<p>For programs with interactive input, a useful pattern for robustly handling errors or surprises in the input is a while-try-except pattern, with a form like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>try_again = True
+while try_again:
+    try:
+        Get input
+        Do stuff with it
+        try_again = False
+    except Exception as message:
+        print(&quot;Exception&quot;, message, &quot; occurred; please try again.&quot;)
+        Maybe actually fix the problem, and if successful: try_again = False
+</pre></div>
+</div>
+<p>One can refine this by adding <code class="docutils literal notranslate"><span class="pre">except</span></code> clauses for as many specific exception types as are relevant, with more specific handling for each.</p>
+<p><a name=Exercise-D-A></a></p>
+<div class="section" id="exercise-d-a-add-handling-for-multiple-types-of-exception">
+<h3>Exercise D-A. Add handling for multiple types of exception<a class="headerlink" href="#exercise-d-a-add-handling-for-multiple-types-of-exception" title="Permalink to this headline">¶</a></h3>
+<p>Copy your latest version of a “quadratic_solver” function here into your module name something like “<code class="docutils literal notranslate"><span class="pre">math246</span></code>” created for Unit 9) — or into a new file named something like <code class="docutils literal notranslate"><span class="pre">quadratic_solvers.py</span></code>.
+Then augment that function with multiple <code class="docutils literal notranslate"><span class="pre">except</span></code> clauses to handle all exceptions that we can get to occur.</p>
+<p>First, read about the possibilities, for example in Section 5 of the official
+<a class="reference external" href="https://docs.python.org/3/library/">Python 3 Standard Library Reference Manual</a><br />
+at https://docs.python.org/3/library/exceptions.html, or other sources that you can find.</p>
+<p>Two exceptions of particular importance for us are <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> and <code class="docutils literal notranslate"><span class="pre">ArithmeticError</span></code>, and sub-types of the latter like <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> and <code class="docutils literal notranslate"><span class="pre">OverflowError</span></code>.
+(Note the “CamelCase” capitalization of each word in an exception name:
+it is essential to get this right, since Python is case-sensitive.)</p>
+<p>Aside: If you find a source on Python exceptions that you prefer to the above references, please let us all know!</p>
+<p><a name=Exercise-D-B></a></p>
+</div>
+</div>
+<div class="section" id="exercise-d-b-handling-division-by-zero-in-newton-s-method">
+<h2>Exercise D-B. Handling division by zero in Newton’s method<a class="headerlink" href="#exercise-d-b-handling-division-by-zero-in-newton-s-method" title="Permalink to this headline">¶</a></h2>
+<p>Using a basic code for Newton’s Method (such as the one I provide in module <code class="docutils literal notranslate"><span class="pre">root_finders</span></code>) experiment with exception handling for the possibility of division by zero.</p>
+<p>(You could then do likewise with the Secant Method.)</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="displaying-python-code-in-markdown-text-cells.html" title="previous page">Displaying Python Code in Markdown Text Cells</a>
+    <a class='right-next' id="next-link" href="scipy-tools-for-linear-algebra.html" title="next page">Package Scipy and More Tools for Linear Algebra</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brenton LeMesurier, College of Charleston<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,750 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Numbers, Histograms, and a Simulation &#8212; Python for Scientific Computing</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Formatted Output and Some Text String Manipulation" href="formatted-output-and-some-text-string-manipulation.html" />
+    <link rel="prev" title="Summation and Integration" href="summation-and-integration.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python for Scientific Computing</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Preface
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Python with Numpy and Matplotlib
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction-to-python-and-jupyter-notebooks.html">
+   Introduction to Python and Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-variables-lists-tuples-numpy-arrays.html">
+   Python Variables, Including Lists and Tuples, and Arrays from Package Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="decisions-with-if-else-elif.html">
+   Decision Making With if, else, and elif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Defining and Using Python Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="code-files-modules-IDEs.html">
+   Code Files, Modules, and an Integrated Development Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-for.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="iteration-with-while.html">
+   Iteration with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     while
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recursion.html">
+   Recursion (vs iteration)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphing-with-matplotlib.html">
+   Plotting Graphs with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array-operations-and-linear-algebra.html">
+   Numpy Array Operations and Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summation-and-integration.html">
+   Summation and Integration
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Random Numbers, Histograms, and a Simulation
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="formatted-output-and-some-text-string-manipulation.html">
+   Formatted Output and Some Text String Manipulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes-objects-attributes-methods.html">
+   Classes, Objects, Attributes, Methods: Very Basic Object-Oriented Programming in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="displaying-python-code-in-markdown-text-cells.html">
+   Displaying Python Code in Markdown Text Cells
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exception-handling.html">
+   Exceptions and Exception Handling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scipy-tools-for-linear-algebra.html">
+   Package Scipy and More Tools for Linear Algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="romberg-integration.html">
+   The Romberg Method
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/random-numbers-and-simulation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/random-numbers-and-simulation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disclaimer">
+     Disclaimer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-random-within-package-numpy">
+   Module
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     random
+    </span>
+   </code>
+   within package
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     numpy
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uniformly-distributed-real-numbers-numpy-random-rand">
+   Uniformly distributed real numbers:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     numpy.random.rand
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arrays-of-random-values">
+     Arrays of random values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-dimensional-arrays-of-random-values">
+     Multi-dimensional arrays of random values
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normally-distributed-real-numbers-numpy-random-randn">
+   Normally distributed real numbers:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     numpy.random.randn
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histogram-plots-with-matplotlib-random-hist">
+   Histogram plots with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     matplotlib.random.hist
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-integers-numpy-random-randint">
+   Random integers:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     numpy.random.randint
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifying-bin-edges-for-the-histogram">
+     Specifying bin edges for the histogram
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-a-approximating-pi">
+       Exercise A: approximating
+       <span class="math notranslate nohighlight">
+        \(\pi\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exercise-b">
+       Exercise B
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="random-numbers-histograms-and-a-simulation">
+<h1>Random Numbers, Histograms, and a Simulation<a class="headerlink" href="#random-numbers-histograms-and-a-simulation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Random numbers are often useful both for simulation of physical processes and for generating a collection of test cases.
+Here we will do a mathematical simulation: approximating <span class="math notranslate nohighlight">\(\pi\)</span> on the basis that the unit circle occupies a fraction <span class="math notranslate nohighlight">\(\pi/4\)</span> of the <span class="math notranslate nohighlight">\(2 \times 2\)</span> square enclosing it.</p>
+<div class="section" id="disclaimer">
+<h3>Disclaimer<a class="headerlink" href="#disclaimer" title="Permalink to this headline">¶</a></h3>
+<p>Actually, the best we have available is <strong>pseudo-random</strong> numbers, generated by algorithms that actually produce a very long but eventually repeating sequence of numbers.</p>
+</div>
+</div>
+<div class="section" id="module-random-within-package-numpy">
+<h2>Module <code class="docutils literal notranslate"><span class="pre">random</span></code> within package <code class="docutils literal notranslate"><span class="pre">numpy</span></code><a class="headerlink" href="#module-random-within-package-numpy" title="Permalink to this headline">¶</a></h2>
+<p>The pseudo-random number generator we use are provided by package Numpy in its module random – full name <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>.
+This module contains numerous random number generators; here we look at just a few.</p>
+<p>We introduce the abbreviation “npr” for this, along with the standard abbreviations “np” for <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and “plt” for module <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> witit package `matplotlib</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">npr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="uniformly-distributed-real-numbers-numpy-random-rand">
+<h2>Uniformly distributed real numbers: <code class="docutils literal notranslate"><span class="pre">numpy.random.rand</span></code><a class="headerlink" href="#uniformly-distributed-real-numbers-numpy-random-rand" title="Permalink to this headline">¶</a></h2>
+<p>First, the function <code class="docutils literal notranslate"><span class="pre">rand</span></code> (full name <code class="docutils literal notranslate"><span class="pre">numpy.random.rand</span></code>) generates uniformly-distributed real numbers in the semi-open interval <span class="math notranslate nohighlight">\([0,1)\)</span>.</p>
+<p>To generate a single value, use it with no argument:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">npr</span><span class="o">.</span><span class="n">rand</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6831120389814106
+0.5548018157238266
+0.8695626004658878
+0.3752686546706374
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="arrays-of-random-values">
+<h3>Arrays of random values<a class="headerlink" href="#arrays-of-random-values" title="Permalink to this headline">¶</a></h3>
+<p>To generate an array of values all at once, one can specify how many as the first and only input argument:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pseudorandomnumbers</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pseudorandomnumbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.62144348 0.03793401 0.13891253 0.84806369]
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, the first method has an advantage in some situations: neither the whole list of integers from 0 to <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">-</span> <span class="pre">1</span></code> nor the collection of random numbers is stored at any time: instead, just one value at a time is provided, used, and then “forgotten”.
+This can be beneficial or even essential when a very large number of random values is used; it is not unusual for a simulation to require more random values than the computer’s memory can hold.</p>
+</div>
+<div class="section" id="multi-dimensional-arrays-of-random-values">
+<h3>Multi-dimensional arrays of random values<a class="headerlink" href="#multi-dimensional-arrays-of-random-values" title="Permalink to this headline">¶</a></h3>
+<p>We can also generate multi-dimensional arrays, by giving the lengths of each dimension as arguments:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers2d</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A two-dimensional array of random numbers:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">numbers2d</span><span class="p">)</span>
+<span class="n">numbers3d</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">A three-dimensional array of random numbers:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">numbers3d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A two-dimensional array of random numbers:
+ [[0.18395217 0.71429007 0.68437103]
+ [0.00242336 0.92888447 0.14129646]]
+
+A three-dimensional array of random numbers:
+ [[[0.2511712  0.85518662 0.36048736 0.11214513]
+  [0.00948166 0.91241279 0.07428897 0.18599767]
+  [0.75078587 0.31421873 0.00762302 0.15589679]]
+
+ [[0.78636402 0.48269234 0.08894184 0.33770037]
+  [0.66866924 0.85747635 0.82185659 0.83088524]
+  [0.98993293 0.10828591 0.78003614 0.53410965]]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="normally-distributed-real-numbers-numpy-random-randn">
+<h2>Normally distributed real numbers: <code class="docutils literal notranslate"><span class="pre">numpy.random.randn</span></code><a class="headerlink" href="#normally-distributed-real-numbers-numpy-random-randn" title="Permalink to this headline">¶</a></h2>
+<p>The function <code class="docutils literal notranslate"><span class="pre">randn</span></code> has the same interface, but generates numbers with the standard normal distribution of mean zero, standard deviation one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ten normally distributed values:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">npr</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ten normally distributed values:
+ [ 1.01125557 -0.51308499  1.47690102 -0.1352893   0.03629515  1.06888055
+  0.17867389  0.03297391  1.62309016  0.38036881 -1.45193537 -0.16739935
+  1.52999647 -0.24956606  0.62335861 -0.23251452  0.4546426  -0.61267693
+  1.24106299  0.52917226]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">7</span>
+<span class="n">normf_samples</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">normf_samples</span><span class="p">)</span><span class="o">/</span><span class="n">n_samples</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The mean of these&#39;</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="s1">&#39;samples is&#39;</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>
+<span class="n">standard_deviation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">normf_samples</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">n_samples</span> <span class="o">-</span> <span class="n">mean</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;and their standard deviation is&#39;</span><span class="p">,</span> <span class="n">standard_deviation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean of these 10000000 samples is 0.00032428885458364956
+and their standard deviation is 1.0002386370861691
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note</strong> The exact mean and standard deviation of the standard normal distribtion are 0 and 1 respectively,
+so the slight variations above are due to these being only a sample mean and sample standard deviation.</p>
+</div>
+<div class="section" id="histogram-plots-with-matplotlib-random-hist">
+<h2>Histogram plots with <code class="docutils literal notranslate"><span class="pre">matplotlib.random.hist</span></code><a class="headerlink" href="#histogram-plots-with-matplotlib-random-hist" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">matplotlib.random</span></code> has a function <code class="docutils literal notranslate"><span class="pre">hist(x,</span> <span class="pre">bins,</span> <span class="pre">...)</span></code> for plotting histograms, so we can check what this normal distribution actually looks like.</p>
+<p>Input parameter <code class="docutils literal notranslate"><span class="pre">x</span></code> is the list of values, and when input parameter <code class="docutils literal notranslate"><span class="pre">bins</span></code> is given an integer value, the data is binned into that many equally wide intervals.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">hist</span></code> also returns three values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>, the number of values in each bin (the bar heights on the histogram)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code> (which I prefer to call <code class="docutils literal notranslate"><span class="pre">bin_edges</span></code>), the list of values of the edges between the bins</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">patches</span></code>, which we can ignore!</p></li>
+</ul>
+<p>It is best to assigned this output to variables; otherwise the numerous values are sprayed over the screen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: the three output values must be assigned to variables, even though we do not need them here.</span>
+<span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">patches</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normf_samples</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/random-numbers-and-simulation_16_0.png" src="../_images/random-numbers-and-simulation_16_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="random-integers-numpy-random-randint">
+<h2>Random integers: <code class="docutils literal notranslate"><span class="pre">numpy.random.randint</span></code><a class="headerlink" href="#random-integers-numpy-random-randint" title="Permalink to this headline">¶</a></h2>
+<p>One can generate pseudo-random integers, uniformly distributed between specified lower and upper values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_dice</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">dice_rolls</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_dice</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_dice</span><span class="p">,</span> <span class="s1">&#39;random dice rolls:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">dice_rolls</span><span class="p">)</span>
+<span class="c1"># Count each outcome: this needs a list instead of an array:</span>
+<span class="n">dice_rolls_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dice_rolls</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">dice_rolls_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;occured&#39;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s1">&#39;times&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60 random dice rolls:
+ [4 3 2 3 3 3 3 4 1 6 5 4 4 6 6 3 2 6 5 2 5 4 3 1 4 4 1 1 2 2 3 4 3 4 1 6 1
+ 3 6 6 6 5 6 6 2 5 6 4 1 3 2 5 4 5 2 3 6 3 3 5]
+1 occured 7 times
+2 occured 8 times
+3 occured 14 times
+4 occured 11 times
+5 occured 8 times
+6 occured 12 times
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="specifying-bin-edges-for-the-histogram">
+<h3>Specifying bin edges for the histogram<a class="headerlink" href="#specifying-bin-edges-for-the-histogram" title="Permalink to this headline">¶</a></h3>
+<p>This time, it is best to explicitly specify a list of the edges of the bins, by making the second argument <code class="docutils literal notranslate"><span class="pre">bins</span></code> a list.</p>
+<p>With six values, seven edges are needed, and it looks nicest if they are centered on the integers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bin_edges</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">patches</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dice_rolls</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/random-numbers-and-simulation_21_0.png" src="../_images/random-numbers-and-simulation_21_0.png" />
+</div>
+</div>
+<p>Run the above several times, redrawing the histogram each time; you should see a lot of variation.</p>
+<p>Things average out with more rolls:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_dice</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span>
+<span class="n">dice_rolls</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_dice</span><span class="p">)</span>
+<span class="c1"># Count each outcome: this needs a list instead of an array:</span>
+<span class="n">dice_rolls_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dice_rolls</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">dice_rolls_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;occured a fraction&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">/</span><span class="n">n_dice</span><span class="p">,</span> <span class="s1">&#39;of the time&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">patches</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dice_rolls</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bin_edges</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 occured a fraction 0.166567 of the time
+2 occured a fraction 0.166454 of the time
+3 occured a fraction 0.166568 of the time
+4 occured a fraction 0.16633 of the time
+5 occured a fraction 0.167526 of the time
+6 occured a fraction 0.166555 of the time
+</pre></div>
+</div>
+<img alt="../_images/random-numbers-and-simulation_23_1.png" src="../_images/random-numbers-and-simulation_23_1.png" />
+</div>
+</div>
+<p>The histogram is now visually boring, but mathematically more satisfying.</p>
+<p><a name="Exercise-A"></a></p>
+<div class="section" id="exercise-a-approximating-pi">
+<h4>Exercise A: approximating <span class="math notranslate nohighlight">\(\pi\)</span><a class="headerlink" href="#exercise-a-approximating-pi" title="Permalink to this headline">¶</a></h4>
+<p>We can compute approximations of <span class="math notranslate nohighlight">\(\pi\)</span> by using the fact that the unit circle occupies a fraction <span class="math notranslate nohighlight">\(\pi/4\)</span> of the circumscribed square:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="c1"># Red circle </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="c1"># Blue square</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>  <span class="c1"># bottom side of square</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>  <span class="c1"># right side  of square</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>  <span class="c1"># top side of square</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>  <span class="c1"># left side of square</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc7ea44be10&gt;]
+</pre></div>
+</div>
+<img alt="../_images/random-numbers-and-simulation_26_1.png" src="../_images/random-numbers-and-simulation_26_1.png" />
+</div>
+</div>
+<p>We can use this fact as follows:</p>
+<ul class="simple">
+<li><p>generate a list of <span class="math notranslate nohighlight">\(N\)</span> random points in the square <span class="math notranslate nohighlight">\([-1,1] \times [-1,1]\)</span> that circumscribes the unit circle,
+by generating successive unifromly distributed random values for both the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinates.</p></li>
+<li><p>compute the fraction of these that are inside the unit circle, which should be approximately <span class="math notranslate nohighlight">\(\pi/4\)</span>.
+(<span class="math notranslate nohighlight">\(N\)</span> needs to be fairly large; you could try <span class="math notranslate nohighlight">\(N=100\)</span> initially, but will increase it later.)</p></li>
+<li><p>Multiply by four and there you are!</p></li>
+</ul>
+<p>Do multiple trials with the same number <span class="math notranslate nohighlight">\(N\)</span> of samples, to see the variation as an indication of accuracy.</p>
+<p>Collect the various approximations of <span class="math notranslate nohighlight">\(\pi\)</span> in a list, compute the (sample) mean and (sample) standard deviation of the list, and illustrate with a histogram.</p>
+<p><a name="Exercise-B"></a></p>
+</div>
+<div class="section" id="exercise-b">
+<h4>Exercise B<a class="headerlink" href="#exercise-b" title="Permalink to this headline">¶</a></h4>
+<p>It takes a lot of samples to get decent accuracy, so after part (a) is working,
+experiment with successively more samples;
+increase the number <span class="math notranslate nohighlight">\(N\)</span> of samples per trial by big steps, like factors of 100.</p>
+<p>For each choice of sample size <span class="math notranslate nohighlight">\(N\)</span>, compute the mean and standard deviation, and plot the histogram.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="summation-and-integration.html" title="previous page">Summation and Integration</a>
+    <a class='right-next' id="next-link" href="formatted-output-and-some-text-string-manipulation.html" title="next page">Formatted Output and Some Text String Manipulation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brenton LeMesurier, College of Charleston<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
