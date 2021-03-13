@@ -76,6 +76,8 @@
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../index.html">
   
+  <img src="../_static/WM_SSM_new_logo.jpg" class="logo" alt="logo">
+  
   
   <h1 class="site-logo" id="site-title">Python for Scientific Computing</h1>
   
@@ -367,13 +369,11 @@
       </span>
      </code>
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#exercise-b-a-function-with-function-inputs-and-exceptions">
-       Exercise B. A function with function inputs (and exceptions)
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-b-a-function-with-function-inputs-and-exceptions">
+     Exercise B. A function with function inputs (and exceptions)
+    </a>
    </li>
   </ul>
  </li>
@@ -801,7 +801,7 @@ mean(a, b)
 <div class="section" id="exercise-a-a-robust-function-for-solving-quadratics">
 <h3>Exercise A. A robust function for solving quadratics<a class="headerlink" href="#exercise-a-a-robust-function-for-solving-quadratics" title="Permalink to this headline">¶</a></h3>
 <p>Refine the above function <code class="docutils literal notranslate"><span class="pre">solve_quadratic</span></code> for solving quadratics, and make it <strong>robust</strong>; handling all possible input triples of real numbers in a “reasonable” way.
-(If you have done Exercise C of the section on <span class="xref myst">decision making</span>, this is essentially just integrating that code into a function.)</p>
+(If you have done Exercise C of the section on <a class="reference internal" href="decisions-with-if-else-elif.html"><span class="doc std std-doc">decision making</span></a>, this is essentially just integrating that code into a function.)</p>
 <p>Not all choices of those coefficients will give two distinct real roots, so work out all the possibilities, and try to handle them all.</p>
 <ol class="simple">
 <li><p>Its input arguments are three real (floating point) numbers, giving the coefficients <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(c\)</span> of the quadratic equation <span class="math notranslate nohighlight">\(ax^2 + bx + c = 0\)</span>.</p></li>
@@ -999,8 +999,9 @@ For example, the value <span class="math notranslate nohighlight">\(h= 10^{-8}\)
 <h3>Arguments with default values must come after all others in the <code class="docutils literal notranslate"><span class="pre">def</span></code><a class="headerlink" href="#arguments-with-default-values-must-come-after-all-others-in-the-def" title="Permalink to this headline">¶</a></h3>
 <p>When default values are given for some arguments but not all, these must appear in the function definition after all the arguments without default values, as is the case with <code class="docutils literal notranslate"><span class="pre">h=1e-8</span></code> above.</p>
 <p><a name=Exercise-B></a></p>
+</div>
 <div class="section" id="exercise-b-a-function-with-function-inputs-and-exceptions">
-<h4>Exercise B. A function with function inputs (and exceptions)<a class="headerlink" href="#exercise-b-a-function-with-function-inputs-and-exceptions" title="Permalink to this headline">¶</a></h4>
+<h3>Exercise B. A function with function inputs (and exceptions)<a class="headerlink" href="#exercise-b-a-function-with-function-inputs-and-exceptions" title="Permalink to this headline">¶</a></h3>
 <p>A usually more accurate formula for approximating derivatives is the <em>Centered Difference Rule</em>
 $<span class="math notranslate nohighlight">\(Df(x) \approx \frac{f(x+h) - f(x-h)}{2 h}\)</span>$</p>
 <ol class="simple">
@@ -1012,7 +1013,6 @@ $<span class="math notranslate nohighlight">\(Df(x) \approx \frac{f(x+h) - f(x-h
 4. Choose and implement a few test cases.</p>
 <p>You may do this all in the same notebook as above.</p>
 <p>If you wish to also do this in a Python code file, use a different file than the quadratic solving exercise; maybe named “centered_differences.py”.</p>
-</div>
 </div>
 </div>
 <div class="section" id="optional-topic-anonymous-functions-a-k-a-lambda-functions">
@@ -1167,7 +1167,7 @@ However, this topic is not needed for this course; it is only a convenience, and
         
           By Brenton LeMesurier, College of Charleston<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
